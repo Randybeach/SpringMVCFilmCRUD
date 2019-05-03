@@ -5,7 +5,7 @@
 	id="WebApp_ID" version="3.0">
 	<display-name>ValidationLab</display-name>
 	<welcome-file-list>
-		<welcome-file>home.jsp</welcome-file>
+		<welcome-file>/WEB-INF/views/home.jsp</welcome-file>
 	</welcome-file-list>
 	<servlet>
 		<servlet-name>film</servlet-name>
