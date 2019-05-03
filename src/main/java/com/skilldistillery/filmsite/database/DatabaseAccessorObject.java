@@ -44,7 +44,7 @@ public class DatabaseAccessorObject implements DatabaseAccessor{
 			}
 			conn.close();
 			if (film == null) {
-				return new Film("");
+				return film;
 			}
 			return film;
 
