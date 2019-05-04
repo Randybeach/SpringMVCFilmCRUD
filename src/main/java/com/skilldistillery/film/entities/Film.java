@@ -18,6 +18,9 @@ public class Film {
 	private String special_features;
 	private String language;
 	
+	public Film() {
+		
+	}
 	public Film(String title2, String description2, int rental_duration2, int release_year2, double rental_rate2, int length2, double replacement_cost2, String rating2, String special_features2, int language_id2) {
 		title = title2;
 		description = description2;
