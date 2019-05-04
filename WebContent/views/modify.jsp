@@ -25,37 +25,37 @@
 	</form>
 	<c:if test="${value == 'change' }">
 		<h2>What fields would you like to change?</h2>
-		<form action="changeFilm.do" method=POST>
-			Title:<input type="text" name="title" value="${details.title }"><br>
-			Description:<input type="text" name="description" value="${details.description }"><br> 
-			Release Year:<input type="text" name="release_year" value="${details.release_year }"><br>
-			Rental Duration:<input type="text" name="rental_duration" value="${details.rental_duration }"><br> 
-			Rental Rate:<input type="text" name="rental_rate" value="${details.rental_rate }"><br>
-			Length:<input type="text" name="length" value="${details.length }"><br>
-			Replacement Cost:<input type="text" name="replacement_cost" value="${details.replacement_cost }"><br>
-			Language:   <select name="language_id">
+		<form:form action="changeFilm.do" method="POST" modelAttribute="film">
+			Title:<form:input path="title" value="${details.title }"/><br>
+			Description:<form:input path="description" value="${details.description }"/><br> 
+			Release Year:<form:input path="release_year" value="${details.release_year }"/><br>
+			Rental Duration:<form:input path="rental_duration" value="${details.rental_duration }"/><br> 
+			Rental Rate:<form:input path="rental_rate" value="${details.rental_rate }"/><br>
+			Length:<form:input path="length" value="${details.length }"/><br>
+			Replacement Cost:<form:input path="replacement_cost" value="${details.replacement_cost }"/><br>
+			Language:   <form:select path="language_id">
 						    <option value="1">English</option>
 						    <option value="2">Italian</option>
 						    <option value="3">Japanese</option>
 						    <option value="4">Mandarin</option>
 						    <option value="5">French</option>
 						    <option value="6">German</option>
-						</select><br>
-			Rating:     <select name="rating">
+						</form:select><br>
+			Rating:     <form:select path="rating">
 						    <option value="G">G</option>
 						    <option value="PG">PG</option>
 						    <option value="PG13">PG-13</option>
 						    <option value="R">R</option>
 						    <option value="NC17">NC-17</option>
-						</select><br>
+						</form:select><br>
 			Special Features:<br>
-			<input type="checkbox" name="special_features" value = "Trailers,">Trailers<br> 
-			<input type="checkbox" name="special_features" value = "Commentary,">Commentary<br> 
-			<input type="checkbox" name="special_features" value = "Behind the Scenes,">Behind the Scenes<br> 
-			<input type="checkbox" name="special_features" value = "Deleted Scenes,">Deleted Scenes<br> 
+			<form:checkbox path="special_features" value = "Trailers,"/>Trailers<br> 
+			<form:checkbox path="special_features" value = "Commentary,"/>Commentary<br> 
+			<form:checkbox path="special_features" value = "Behind the Scenes,"/>Behind the Scenes<br> 
+			<form:checkbox path="special_features" value = "Deleted Scenes,"/>Deleted Scenes<br> 
 			<input type="submit">
 
-		</form>
+		</form:form>
 	</c:if>
 	<c:if test="${value == 'delete'}">
 		<form action="deleteFilm.do" method=POST>
@@ -66,36 +66,40 @@
 	</c:if>
 	<c:if test="${value == 'add'}">
 		<h2>Your new film</h2>
-		<form action="addFilm.do" method=POST>
-			Title:<input type="text" name="title"><br>
-			Description:<input type="text" name="description"><br> 
-			Release Year:<input type="text" name="release_year"><br> 
-			Rental Duration:<input type="text" name="rental_duration"><br> 
-			Rental Rate:<input type="text" name="rental_rate"><br> 
-			Length:<input type="text" name="length""><br> 
-			Replacement Cost:<input type="text" name="replacement_cost"><br> 
-			Language:<select name="language_id">
+		<form:form action="addFilm.do" method="POST" modelAttribute="film">
+			Title:<form:input path="title" /><br>
+			Description:<form:input type="text" path="description"/><br> 
+			Release Year:<form:input type="text" path="release_year"/><br> 
+			Rental Duration:<form:input type="text" path="rental_duration"/><br> 
+			Rental Rate:<form:input type="text" path="rental_rate"/><br> 
+			Length:<form:input type="text" path="length"/><br> 
+			Replacement Cost:<form:input type="text" path="replacement_cost"/><br> 
+			Language:<form:select path="language_id">
 						    <option value="1">English</option>
 						    <option value="2">Italian</option>
 						    <option value="3">Japanese</option>
 						    <option value="4">Mandarin</option>
 						    <option value="5">French</option>
 						    <option value="6">German</option>
-						</select><br>
-			Rating:<select name="rating">
+						</form:select><br>
+			Rating:<form:select path="rating">
 						    <option value="G">G</option>
 						    <option value="PG">PG</option>
 						    <option value="PG13">PG-13</option>
 						    <option value="R">R</option>
 						    <option value="NC17">NC-17</option>
-						</select><br>
+						</form:select><br>
 			Special Features:<br>
 			<input type="checkbox" name="special_features" value = "Trailers,">Trailers<br> 
 			<input type="checkbox" name="special_features" value = "Commentary,">Commentary<br> 
 			<input type="checkbox" name="special_features" value = "Behind the Scenes,">Behind the Scenes<br> 
 				<input type="checkbox" name="special_features" value = "Deleted Scenes,">Deleted Scenes<br> 
+			<form:checkbox path="special_features" value = "Trailers,"/>Trailers<br> 
+			<form:checkbox path="special_features" value = "Commentary,"/>Commentary<br> 
+			<form:checkbox path="special_features" value = "Behind the Scenes,"/>Behind the Scenes<br> 
+			<form:checkbox path="special_features" value = "Deleted Scenes,"/>Deleted Scenes<br> 
 				<input type="submit">
-		</form>
+		</form:form>
 	</c:if>
 </body>
 </html>

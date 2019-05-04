@@ -202,7 +202,7 @@ public class DatabaseAccessorObject implements DatabaseAccessor {
 		Film film = f;
 		String user = "student";
 		String password = "student";
-		String sql = "Delete from film where film.id = ?";
+		String sql = "DELETE FROM film WHERE id = ?";
 		Connection conn = null;
 		try {
 			conn = DriverManager.getConnection(URL, user, password);

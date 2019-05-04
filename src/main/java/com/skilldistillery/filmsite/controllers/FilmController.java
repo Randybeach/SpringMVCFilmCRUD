@@ -1,6 +1,7 @@
 package com.skilldistillery.filmsite.controllers;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
@@ -34,32 +35,10 @@ public class FilmController {
 	}
 	
 	@RequestMapping(path="addFilm.do", 
-			params= {"title", "description", "release_year","rental_duration", "rental_rate", "length", "replacement_cost", "rating", "special_features", "language_id"},
 			method=RequestMethod.POST)
-	public ModelAndView addFilm(String title, String description, String release_year, String rental_duration, String rental_rate, String length, String replacement_cost, String rating, String special_features, String language_id) {
+	public ModelAndView addFilm(@ModelAttribute("film") Film film) {
 		ModelAndView mv = new ModelAndView();
-		if(release_year.equals("")) {
-			release_year = "0";
-		}
-		if(rental_rate.equals("")) {
-			rental_rate = "0";
-		}
-		if(length.equals("")) {
-			length = "0";
-		}
-		if(replacement_cost.equals("")) {
-			replacement_cost = "0";
-		}
-		if(rental_duration.equals("")) {
-			rental_duration = "0";
-		}
-		int release_yearInt = Integer.parseInt(release_year);
-		double rental_rateDouble = Double.parseDouble(rental_rate);
-		int lengthInt = Integer.parseInt(length);
-		double replacement_costDouble = Double.parseDouble(replacement_cost);
-		int rental_durationInt = Integer.parseInt(replacement_cost);
-		int language_idInt = Integer.parseInt(language_id);
-		Film film = new Film(title, description, rental_durationInt, release_yearInt, rental_rateDouble, lengthInt, replacement_costDouble, rating, special_features, language_idInt);
+	
 		
 		Film createdFilm = db.createFilm(film);
 		
@@ -111,12 +90,14 @@ public class FilmController {
 			if(film == null) {
 				mv.setViewName("/views/error.jsp");
 			}else {
+			mv.addObject("film", new Film());
 			mv.addObject("details", film);
 			}
 			
 		}else if(value.equals("delete")) {
 			mv.addObject("value",value);
 		}else if(value.equals("add")) {
+			mv.addObject("film", new Film());
 			mv.addObject("value",value);
 		}
 			
@@ -134,7 +115,7 @@ public class FilmController {
 	}
 	
 	@RequestMapping(path="changeFilm.do", method=RequestMethod.POST) 
-	public ModelAndView updateFilm(Film film) {
+	public ModelAndView updateFilm(@ModelAttribute("film") Film film) {
 		ModelAndView mv = new ModelAndView();
 		
 		mv.addObject("details",db.updateFilm(film));
