@@ -9,7 +9,7 @@
 <title>SDMDB</title>
 </head>
 <body>
-<h1>Welome to SDMDB</h1>
+<h1>Welcome to SDMDB</h1>
 <h3>What would you like to do today?</h3>
 <form action = "search.do" method = GET>
 <input type = "text" name = "keyword"><input type = "submit" value = "Search Films">
