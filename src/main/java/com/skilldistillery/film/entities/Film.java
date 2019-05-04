@@ -72,7 +72,6 @@ public class Film {
 		this.id = id;
 	}
 	
-	
 	public int getId() {
 		return id;
 	}
