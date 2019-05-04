@@ -60,7 +60,7 @@ public class DatabaseAccessorObject implements DatabaseAccessor {
 	public Actor findActorById(int actorId) {
 		String user = "student";
 		String password = "student";
-		String sql = "select * from actor where actor.id = ?";
+		String sql = "SELECT * FROM actor WHERE id = ?";
 
 		try {
 			Connection conn = DriverManager.getConnection(URL, user, password);
