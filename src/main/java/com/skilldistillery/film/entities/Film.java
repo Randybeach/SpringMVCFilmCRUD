@@ -7,7 +7,7 @@ import com.skilldistillery.film.entities.Film;
 
 public class Film {
 
-	List<Actor> actors;
+	private List<Actor> actors;
 	private int id;
 	private String title;
 	private String description;
