@@ -93,7 +93,7 @@
 			<input type="checkbox" name="special_features" value = "Trailers,">Trailers<br> 
 			<input type="checkbox" name="special_features" value = "Commentary,">Commentary<br> 
 			<input type="checkbox" name="special_features" value = "Behind the Scenes,">Behind the Scenes<br> 
-			<input type="checkbox" name="special_features" value = "Deleted Scenes,">Deleted Scenes<br> 
+				<input type="checkbox" name="special_features" value = "Deleted Scenes,">Deleted Scenes<br> 
 				<input type="submit">
 		</form>
 	</c:if>
