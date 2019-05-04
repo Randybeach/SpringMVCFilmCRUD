@@ -48,7 +48,12 @@
 						    <option value="R">R</option>
 						    <option value="NC17">NC-17</option>
 						</select><br>
-			Special Features:<input type="text" name="special_features" value="${details.special_features }"><br> <input type="submit">
+			Special Features:<br>
+			<input type="checkbox" name="special_features" value = "Trailers,">Trailers<br> 
+			<input type="checkbox" name="special_features" value = "Commentary,">Commentary<br> 
+			<input type="checkbox" name="special_features" value = "Behind the Scenes,">Behind the Scenes<br> 
+			<input type="checkbox" name="special_features" value = "Deleted Scenes,">Deleted Scenes<br> 
+			<input type="submit">
 
 		</form>
 	</c:if>
@@ -84,7 +89,11 @@
 						    <option value="R">R</option>
 						    <option value="NC17">NC-17</option>
 						</select><br>
-			Special Features:<input type="text" name="special_features"><br> 
+			Special Features:<br>
+			<input type="checkbox" name="special_features" value = "Trailers,">Trailers<br> 
+			<input type="checkbox" name="special_features" value = "Commentary,">Commentary<br> 
+			<input type="checkbox" name="special_features" value = "Behind the Scenes,">Behind the Scenes<br> 
+			<input type="checkbox" name="special_features" value = "Deleted Scenes,">Deleted Scenes<br> 
 				<input type="submit">
 		</form>
 	</c:if>
