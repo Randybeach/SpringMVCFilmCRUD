@@ -10,8 +10,7 @@ import java.util.ArrayList;
 import java.util.List;
 import com.skilldistillery.film.entities.*;
 
-
-public class DatabaseAccessorObject implements DatabaseAccessor{
+public class DatabaseAccessorObject implements DatabaseAccessor {
 
 	private static final String URL = "jdbc:mysql://localhost:3306/sdvid?useSSL=false";
 
@@ -39,8 +38,8 @@ public class DatabaseAccessorObject implements DatabaseAccessor{
 				film = new Film(rs.getInt("id"), rs.getString("title"), rs.getString("description"),
 						rs.getInt("release_year"), rs.getInt("language_id"), rs.getInt("rental_duration"),
 						rs.getDouble("rental_rate"), rs.getInt("length"), rs.getDouble("replacement_cost"),
-						rs.getString("rating"), rs.getString("special_features"),
-						rs.getString("language.name"),findActorsByFilmId(rs.getInt("id")) );
+						rs.getString("rating"), rs.getString("special_features"), rs.getString("language.name"),
+						findActorsByFilmId(rs.getInt("id")));
 			}
 			conn.close();
 			if (film == null) {
@@ -74,8 +73,8 @@ public class DatabaseAccessorObject implements DatabaseAccessor{
 		} catch (SQLException e) {
 			System.out.println(e);
 		}
-		
-		return new Actor(-1,"None","Found");
+
+		return new Actor(-1, "None", "Found");
 	}
 
 	@Override
@@ -98,7 +97,7 @@ public class DatabaseAccessorObject implements DatabaseAccessor{
 			if (actors.size() > 0) {
 				return actors;
 			}
-			actors.add(new Actor(-1,"",""));
+			actors.add(new Actor(-1, "", ""));
 			return actors;
 		} catch (SQLException e) {
 			System.out.println(e);
@@ -126,10 +125,10 @@ public class DatabaseAccessorObject implements DatabaseAccessor{
 				Film film = new Film(rs.getInt("id"), rs.getString("title"), rs.getString("description"),
 						rs.getInt("release_year"), rs.getInt("language_id"), rs.getInt("rental_duration"),
 						rs.getDouble("rental_rate"), rs.getInt("length"), rs.getDouble("replacement_cost"),
-						rs.getString("rating"), rs.getString("special_features"), rs.getString("language.name"), findActorsByFilmId(rs.getInt("id")) );
-				
-						films.add(film);
-						
+						rs.getString("rating"), rs.getString("special_features"), rs.getString("language.name"),
+						findActorsByFilmId(rs.getInt("id")));
+
+				films.add(film);
 
 			}
 			conn.close();
@@ -137,7 +136,7 @@ public class DatabaseAccessorObject implements DatabaseAccessor{
 				return films;
 			} else {
 				films.add(new Film(""));
-				
+
 				return films;
 			}
 
@@ -160,18 +159,18 @@ public class DatabaseAccessorObject implements DatabaseAccessor{
 			ps.setObject(1, film.getTitle());
 			int num = ps.executeUpdate();
 			ResultSet rs = ps.getGeneratedKeys();
-			if(rs.next()) {
+			if (rs.next()) {
 				System.out.println("New film ID: " + rs.getInt(num));
 				film.setId(num);
 			}
-			
+
 			conn.close();
 			return film;
-		}catch(SQLException e) {
+		} catch (SQLException e) {
 			System.out.println(e);
 			return null;
 		}
-		
+
 	}
 
 	@Override
@@ -187,20 +186,25 @@ public class DatabaseAccessorObject implements DatabaseAccessor{
 			ps.setInt(1, film.getId());
 			ps.executeUpdate();
 			System.out.println("Deleted " + film.getTitle());
-			
-			
+
 			return film;
-		}catch(SQLException e) {
+		} catch (SQLException e) {
 			System.out.println(e);
 			return null;
 		}
-		
+
 	}
 
 	@Override
-	public Film updateFilm(int id) {
-	
-		return null;
+	public Film updateFilm(Film f) {
+		Film film = f;
+		String user = "student";
+		String password = "student";
+		String sql = "UPDATE film SET title = ?, description = ?, release_year = ?, rental_duration = ?, \n"
+				+ "rental_rate = ?, length = ?, replacement_cost = ?, rating = ?, special_features = ?\n"
+				+ "WHERE id = ?;";
+
+		return f;
 	}
 
 }
