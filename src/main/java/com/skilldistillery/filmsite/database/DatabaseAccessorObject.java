@@ -49,6 +49,7 @@ public class DatabaseAccessorObject implements DatabaseAccessor {
 
 		} catch (SQLException e) {
 			System.out.println(e);
+
 			return new Film("");
 		}
 
@@ -153,8 +154,10 @@ public class DatabaseAccessorObject implements DatabaseAccessor {
 		String user = "student";
 		String password = "student";
 		String sql = "INSERT into film (title, language_id) values (?, 1)";
+		Connection conn = null;
 		try {
-			Connection conn = DriverManager.getConnection(URL, user, password);
+			conn = DriverManager.getConnection(URL, user, password);
+			conn.setAutoCommit(false);
 			PreparedStatement ps = conn.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
 			ps.setObject(1, film.getTitle());
 			int num = ps.executeUpdate();
@@ -163,13 +166,21 @@ public class DatabaseAccessorObject implements DatabaseAccessor {
 				System.out.println("New film ID: " + rs.getInt(num));
 				film.setId(num);
 			}
-
-			conn.close();
+			conn.commit();
 			return film;
+
 		} catch (SQLException e) {
+			if (conn != null) {
+				try {
+					conn.rollback();
+				} catch (SQLException sqle) {
+					System.err.println("Error trying to rollback");
+				}
+			}
 			System.out.println(e);
 			return null;
 		}
+		
 
 	}
 
@@ -182,13 +193,22 @@ public class DatabaseAccessorObject implements DatabaseAccessor {
 		Connection conn = null;
 		try {
 			conn = DriverManager.getConnection(URL, user, password);
+			conn.setAutoCommit(false);
 			PreparedStatement ps = conn.prepareStatement(sql);
 			ps.setInt(1, film.getId());
 			ps.executeUpdate();
 			System.out.println("Deleted " + film.getTitle());
 
+			conn.commit();
 			return film;
 		} catch (SQLException e) {
+			if (conn != null) {
+				try {
+					conn.rollback();
+				} catch (SQLException sqle) {
+					System.err.println("Error trying to rollback");
+				}
+			}
 			System.out.println(e);
 			return null;
 		}
@@ -203,8 +223,43 @@ public class DatabaseAccessorObject implements DatabaseAccessor {
 		String sql = "UPDATE film SET title = ?, description = ?, release_year = ?, rental_duration = ?, \n"
 				+ "rental_rate = ?, length = ?, replacement_cost = ?, rating = ?, special_features = ?\n"
 				+ "WHERE id = ?;";
+		Connection conn = null;
 
-		return f;
+		try {
+			conn = DriverManager.getConnection(URL, user, password);
+			conn.setAutoCommit(false);
+			PreparedStatement ps = conn.prepareStatement(sql);
+			
+			ps.setString(1, film.getTitle());
+			ps.setString(2, film.getDescription());
+			ps.setInt(3, film.getRelease_year());
+			ps.setInt(4, film.getRental_duration());
+			ps.setDouble(5, film.getRental_rate());
+			ps.setInt(6, film.getLength());
+			ps.setDouble(7, film.getReplacement_cost());
+			ps.setString(8, film.getRating());
+			ps.setString(9, film.getSpecial_features());
+			ps.setInt(10, film.getId());
+			ps.executeUpdate();
+			System.out.println("You have updated " + film.getTitle());
+			System.out.println(film);
+
+			conn.commit();
+			return film;
+		}
+
+		catch (SQLException e) {
+			if (conn != null) {
+				try {
+					conn.rollback();
+				} catch (SQLException sqle) {
+					System.err.println("Error trying to rollback");
+				}
+			}
+			System.out.println(e);
+			return null;
+		}
+
 	}
 
 }
