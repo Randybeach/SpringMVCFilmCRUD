@@ -97,5 +97,14 @@ public class FilmController {
 		mv.setViewName("/views/modify.jsp");
 		return mv;
 	}
+	
+	@RequestMapping(path="search.do", params="keyword", method=RequestMethod.GET) 
+	public ModelAndView searchFilm(String keyword) {
+		ModelAndView mv = new ModelAndView();
+		
+		mv.addObject("details",db.findFilmByKeyword(keyword));
+		mv.setViewName("/views/home.jsp");
+		return mv;
+	}
 
 }
