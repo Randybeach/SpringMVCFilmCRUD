@@ -22,10 +22,10 @@ public class FilmController {
 			
 		}catch(Exception e) {}
 		if(film == null) {
-			mv.setViewName("WEB-INF/error.jsp");
+			mv.setViewName("/views/error.jsp");
 		}else {
 		mv.addObject("details", film);
-		mv.setViewName("WEB-INF/result.jsp");
+		mv.setViewName("/views/result.jsp");
 		}
 		
 		return mv;
@@ -39,10 +39,10 @@ public class FilmController {
 		Film createdFilm = db.createFilm(film);
 		
 		if(createdFilm == null) {
-			mv.setViewName("WEB-INF/error.jsp");
+			mv.setViewName("/views/error.jsp");
 		}else {
 			mv.addObject("details", createdFilm);
-			mv.setViewName("WEB-INF/result.jsp");
+			mv.setViewName("/views/result.jsp");
 		}
 		
 		
@@ -55,10 +55,10 @@ public class FilmController {
 		Film deletedFilm = db.deleteFilm(film);
 		
 		if(deletedFilm == null) {
-			mv.setViewName("WEB-INF/error.jsp");
+			mv.setViewName("/views/error.jsp");
 		}else {
 			mv.addObject("details", deletedFilm);
-			mv.setViewName("WEB-INF/home.jsp");
+			mv.setViewName("/views/home.jsp");
 		}
 		
 		return mv;
@@ -71,6 +71,7 @@ public class FilmController {
 		mv.setViewName("/views/modify.jsp");
 		return mv;
 	}
+	
 	@RequestMapping(path="selectMod.do", method=RequestMethod.GET) 
 	public ModelAndView changeView(String value, String filmId) {
 		ModelAndView mv = new ModelAndView();
@@ -83,7 +84,7 @@ public class FilmController {
 				
 			}catch(Exception e) {}
 			if(film == null) {
-				mv.setViewName("WEB-INF/error.jsp");
+				mv.setViewName("/views/error.jsp");
 			}else {
 			mv.addObject("details", film);
 			}
@@ -106,6 +107,7 @@ public class FilmController {
 		mv.setViewName("/views/home.jsp");
 		return mv;
 	}
+	
 	@RequestMapping(path="changeFilm.do", method=RequestMethod.POST) 
 	public ModelAndView updateFilm(Film film) {
 		ModelAndView mv = new ModelAndView();
