@@ -33,7 +33,7 @@
 			Rental Rate:<input type="text" name="rental_rate" value="${details.rental_rate }"><br>
 			Length:<input type="text" name="length" value="${details.length }"><br>
 			Replacement Cost:<input type="text" name="replacement_cost" value="${details.replacement_cost }"><br>
-			Language:   <select name="language">
+			Language:   <select name="language_id">
 						    <option value="1">English</option>
 						    <option value="2">Italian</option>
 						    <option value="3">Japanese</option>
@@ -41,14 +41,13 @@
 						    <option value="5">French</option>
 						    <option value="6">German</option>
 						</select><br>
-			Rating:<%-- <input type="text" name="rating" value="${details.rating }"><br> --%>
-			<ul>
-			<li>G<input type = "radio" value = "G" name = "rating"></li>
-			<li>PG<input type = "radio" value = "PG" name = "rating"></li>
-			<li>PG-13<input type = "radio" value = "PG13" name = "rating"></li>
-			<li>R<input type = "radio" value = "R" name = "rating"></li>
-			<li>NC-17<input type = "radio" value = "NC17" name = "rating"></li>
-			</ul>
+			Rating:     <select name="rating">
+						    <option value="G">G</option>
+						    <option value="PG">PG</option>
+						    <option value="PG13">PG-13</option>
+						    <option value="R">R</option>
+						    <option value="NC17">NC-17</option>
+						</select><br>
 			Special Features:<input type="text" name="special_features" value="${details.special_features }"><br> <input type="submit">
 
 		</form>
@@ -63,16 +62,30 @@
 	<c:if test="${value == 'add'}">
 		<h2>Your new film</h2>
 		<form action="addFilm.do" method=POST>
-			Title:<input type="text" name="title"><br> Description:<input
-				type="text" name="description"><br> Release Year:<input
-				type="text" name="release_year"><br> Rental Duration:<input
-				type="text" name="rental_duration"><br> Rental Rate:<input
-				type="text" name="rental_rate"><br> Length:<input
-				type="text" name="length""><br> Replacement Cost:<input
-				type="text" name="replacement_cost"><br> Rating:<input
-				type="text" name="rating"><br> Special Features:<input
-				type="text" name="special_features"><br> <input
-				type="submit">
+			Title:<input type="text" name="title"><br>
+			Description:<input type="text" name="description"><br> 
+			Release Year:<input type="text" name="release_year"><br> 
+			Rental Duration:<input type="text" name="rental_duration"><br> 
+			Rental Rate:<input type="text" name="rental_rate"><br> 
+			Length:<input type="text" name="length""><br> 
+			Replacement Cost:<input type="text" name="replacement_cost"><br> 
+			Language:<select name="language_id">
+						    <option value="1">English</option>
+						    <option value="2">Italian</option>
+						    <option value="3">Japanese</option>
+						    <option value="4">Mandarin</option>
+						    <option value="5">French</option>
+						    <option value="6">German</option>
+						</select><br>
+			Rating:<select name="rating">
+						    <option value="G">G</option>
+						    <option value="PG">PG</option>
+						    <option value="PG13">PG-13</option>
+						    <option value="R">R</option>
+						    <option value="NC17">NC-17</option>
+						</select><br>
+			Special Features:<input type="text" name="special_features"><br> 
+				<inputtype="submit">
 		</form>
 	</c:if>
 </body>
