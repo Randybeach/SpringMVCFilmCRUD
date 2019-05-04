@@ -27,19 +27,29 @@
 		<h2>What fields would you like to change?</h2>
 		<form action="changeFilm.do" method=POST>
 			Title:<input type="text" name="title" value="${details.title }"><br>
-			Description:<input type="text" name="description"
-				value="${details.description }"><br> Release Year:<input
-				type="text" name="release_year" value="${details.release_year }"><br>
-			Rental Duration:<input type="text" name="rental_duration"
-				value="${details.rental_duration }"><br> Rental Rate:<input
-				type="text" name="rental_rate" value="${details.rental_rate }"><br>
+			Description:<input type="text" name="description" value="${details.description }"><br> 
+			Release Year:<input type="text" name="release_year" value="${details.release_year }"><br>
+			Rental Duration:<input type="text" name="rental_duration" value="${details.rental_duration }"><br> 
+			Rental Rate:<input type="text" name="rental_rate" value="${details.rental_rate }"><br>
 			Length:<input type="text" name="length" value="${details.length }"><br>
-			Replacement Cost:<input type="text" name="replacement_cost"
-				value="${details.replacement_cost }"><br> Rating:<input
-				type="text" name="rating" value="${details.rating }"><br>
-			Special Features:<input type="text" name="special_features"
-				value="${details.special_features }"><br> <input
-				type="submit">
+			Replacement Cost:<input type="text" name="replacement_cost" value="${details.replacement_cost }"><br>
+			Language:   <select name="language_id">
+						    <option value="1">English</option>
+						    <option value="2">Italian</option>
+						    <option value="3">Japanese</option>
+						    <option value="4">Mandarin</option>
+						    <option value="5">French</option>
+						    <option value="6">German</option>
+						</select><br>
+			Rating:     <select name="rating">
+						    <option value="G">G</option>
+						    <option value="PG">PG</option>
+						    <option value="PG13">PG-13</option>
+						    <option value="R">R</option>
+						    <option value="NC17">NC-17</option>
+						</select><br>
+			Special Features:<input type="text" name="special_features" value="${details.special_features }"><br> <input type="submit">
+
 		</form>
 	</c:if>
 	<c:if test="${value == 'delete'}">
@@ -52,6 +62,7 @@
 	<c:if test="${value == 'add'}">
 		<h2>Your new film</h2>
 		<form action="addFilm.do" method=POST>
+<<<<<<< HEAD
 			Title:<input type="text" name="title"><br> Description:<input
 				type="text" name="description"><br> Release Year:<input
 				type="text" name="release_year"><br> Rental Duration:<input
@@ -62,6 +73,32 @@
 				type="text" name="rating"><br> Special Features:<input
 				type="text" name="special_features"><br> <input
 				type="submit">
+=======
+			Title:<input type="text" name="title"><br>
+			Description:<input type="text" name="description"><br> 
+			Release Year:<input type="text" name="release_year"><br> 
+			Rental Duration:<input type="text" name="rental_duration"><br> 
+			Rental Rate:<input type="text" name="rental_rate"><br> 
+			Length:<input type="text" name="length""><br> 
+			Replacement Cost:<input type="text" name="replacement_cost"><br> 
+			Language:<select name="language_id">
+						    <option value="1">English</option>
+						    <option value="2">Italian</option>
+						    <option value="3">Japanese</option>
+						    <option value="4">Mandarin</option>
+						    <option value="5">French</option>
+						    <option value="6">German</option>
+						</select><br>
+			Rating:<select name="rating">
+						    <option value="G">G</option>
+						    <option value="PG">PG</option>
+						    <option value="PG13">PG-13</option>
+						    <option value="R">R</option>
+						    <option value="NC17">NC-17</option>
+						</select><br>
+			Special Features:<input type="text" name="special_features"><br> 
+				<input type="submit">
+>>>>>>> 2395bdcced574160e02ee2f237fda53c6a7ed5b4
 		</form>
 	</c:if>
 </body>
