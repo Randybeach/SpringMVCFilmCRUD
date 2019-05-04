@@ -27,10 +27,12 @@
 </c:forEach>
 </ol></li>
 </ul>
-<a href = "selectMod.do?value=change&filmId=${details.id }">Change</a>
+<a href = "selectMod.do?value=change&filmId=${details.id}">Change</a>
 
 <br><br>
-<a href = "deleteFilm.do?filmId=${details.id}">Delete</a>
+<a href = "/MVCFilmSite/deleteFilm.do?filmId=${details.id}">Delete</a>
+<br><br>
+<a href = "/MVCFilmSite/views/home.jsp">Home</a>
 
 </body>
 </html>

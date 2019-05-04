@@ -14,7 +14,7 @@
 	</h1>
 	Would you like to
 	<br>
-	<form action="selectMod.do" method=POST>
+	<form action="selectMod.do" method=GET>
 		<ul>
 			<li>Change Film:<input type="radio" value="change" name="value">
 				Film ID:<input type="text" name="filmId"></li>
@@ -25,7 +25,7 @@
 	</form>
 	<c:if test="${value == 'change' }">
 		<h2>What fields would you like to change?</h2>
-		<form:form action="changeFilm.do" method="POST" modelAttribute="film">
+		<form:form action="changeFilm.do" method="GET" modelAttribute="film">
 			Title:<form:input path="title" value="${details.title }"/><br>
 			Description:<form:input path="description" value="${details.description }"/><br> 
 			Release Year:<form:input path="release_year" value="${details.release_year }"/><br>
@@ -58,7 +58,7 @@
 		</form:form>
 	</c:if>
 	<c:if test="${value == 'delete'}">
-		<form action="deleteFilm.do" method=POST>
+		<form action="deleteFilm.do" method=GET>
 			<h3>What film would you like to remove</h3>
 			Film Id:<input type="text" name="id"><br> <input
 				type="submit">

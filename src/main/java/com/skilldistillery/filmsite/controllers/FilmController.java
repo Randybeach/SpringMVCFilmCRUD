@@ -13,7 +13,7 @@ import com.skilldistillery.filmsite.database.DatabaseAccessorObject;
 public class FilmController {
 	DatabaseAccessorObject db = new DatabaseAccessorObject();
 	
-	@RequestMapping(path="findFilm.do", params="id", method=RequestMethod.POST)
+	@RequestMapping(path="findFilm.do", params="id", method=RequestMethod.GET)
 	public ModelAndView findFilmById(String id) {
 		ModelAndView mv = new ModelAndView();
 		Film film = null;
@@ -53,10 +53,10 @@ public class FilmController {
 		return mv;
 	}
 	
-	@RequestMapping(path="deleteFilm.do", method=RequestMethod.POST)
-	public ModelAndView deleteFilm(int id) {
+	@RequestMapping(path="deleteFilm.do", method=RequestMethod.GET)
+	public ModelAndView deleteFilm(int filmId) {
 		ModelAndView mv = new ModelAndView();
-		Film deletedFilm = db.deleteFilm(id);
+		Film deletedFilm = db.deleteFilm(filmId);
 		
 		if(deletedFilm == null) {
 			mv.setViewName("/views/error.jsp");
@@ -76,7 +76,7 @@ public class FilmController {
 		return mv;
 	}
 	
-	@RequestMapping(path="selectMod.do", method=RequestMethod.POST) 
+	@RequestMapping(path="selectMod.do", method=RequestMethod.GET) 
 	public ModelAndView changeView(String value, String filmId) {
 		ModelAndView mv = new ModelAndView();
 		if(value.equals("change")) {
@@ -114,7 +114,7 @@ public class FilmController {
 		return mv;
 	}
 	
-	@RequestMapping(path="changeFilm.do", method=RequestMethod.POST) 
+	@RequestMapping(path="changeFilm.do", method=RequestMethod.GET) 
 	public ModelAndView updateFilm(@ModelAttribute("film") Film film) {
 		ModelAndView mv = new ModelAndView();
 		
