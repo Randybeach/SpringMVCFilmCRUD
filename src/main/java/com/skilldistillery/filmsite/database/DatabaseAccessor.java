@@ -2,7 +2,8 @@ package com.skilldistillery.filmsite.database;
 
 import java.util.List;
 
-import com.skilldistillery.film.entities.*;
+import com.skilldistillery.film.entities.Actor;
+import com.skilldistillery.film.entities.Film;
 
 public interface DatabaseAccessor {
 	  public Film findFilmById(int filmId);
