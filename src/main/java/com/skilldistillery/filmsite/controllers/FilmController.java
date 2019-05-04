@@ -33,11 +33,33 @@ public class FilmController {
 		return mv;
 	}
 	
-	@RequestMapping(path="createFilm.do", 
-//			params= {"id", "title", "description", "release_year", "language_id", "rental_rate", "length", "replacement_cost", "rating", "special_features"},
+	@RequestMapping(path="addFilm.do", 
+			params= {"title", "description", "release_year","rental_duration", "rental_rate", "length", "replacement_cost", "rating", "special_features"},
 			method=RequestMethod.POST)
-	public ModelAndView addFilm(Film film) {
+	public ModelAndView addFilm(String title, String description, String release_year, String rental_duration, String rental_rate, String length, String replacement_cost, String rating, String special_features) {
 		ModelAndView mv = new ModelAndView();
+		if(release_year.equals("")) {
+			release_year = "0";
+		}
+		if(rental_rate.equals("")) {
+			rental_rate = "0";
+		}
+		if(length.equals("")) {
+			length = "0";
+		}
+		if(replacement_cost.equals("")) {
+			replacement_cost = "0";
+		}
+		if(rental_duration.equals("")) {
+			rental_duration = "0";
+		}
+		int release_yearInt = Integer.parseInt(release_year);
+		double rental_rateDouble = Double.parseDouble(rental_rate);
+		int lengthInt = Integer.parseInt(length);
+		double replacement_costDouble = Double.parseDouble(replacement_cost);
+		int rental_durationInt = Integer.parseInt(replacement_cost);
+		Film film = new Film(title, description, rental_durationInt, release_yearInt, rental_rateDouble, lengthInt, replacement_costDouble, rating, special_features);
+		
 		Film createdFilm = db.createFilm(film);
 		
 		if(createdFilm == null) {

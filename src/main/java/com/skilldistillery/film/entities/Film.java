@@ -21,7 +21,17 @@ public class Film {
 	private String special_features;
 	private String language;
 	
-	
+	public Film(String title2, String description2, int rental_duration2, int release_year2, double rental_rate2, int length2, double replacement_cost2, String rating2, String special_features2) {
+		title = title2;
+		description = description2;
+		rental_duration = rental_duration2;
+		release_year = release_year2;
+		rental_rate = rental_rate2;
+		length = length2;
+		replacement_cost = replacement_cost2;
+		rating = rating2;
+		special_features = special_features2;
+	}
 	public Film(int id, String title, String description, int release_year, int language_id, int rental_duration,
 			double rental_rate, int length, double replacement_cost, String rating, String special_features, String language, List<Actor> actors) {
 		super();
