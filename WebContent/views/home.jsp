@@ -20,7 +20,7 @@
 <c:if test="${not empty details }">
 <ul>
 <c:forEach var = "film" items="${details }">
-<li><a href = "findFilm.do?filmId=${film.id}">${film.title }</a></li>
+<li><a href = "findFilm.do?id=${film.id}">${film.title }</a></li>
 </c:forEach>
 </ul>
 </c:if>

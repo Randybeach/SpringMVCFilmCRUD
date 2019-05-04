@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -17,9 +19,14 @@
 <li><strong>Replacement Cost:</strong>${details.replacement_cost }</li>
 <li><strong>Rating:</strong>${details.rating }</li>
 <li><strong>Special Features:</strong>${details.special_features }</li>
-<li><strong>Cast:</strong>${details.cast }</li>
+<li><strong>Cast:</strong><ol>
+<c:forEach var="actor" items = "${details.actors }">
+<li>${actor }</li>
+
+</c:forEach>
+</ol></li>
 </ul>
-<a href = "selectMod.do?value=changefilmId=${details.id }">Delete</a>
+<a href = "selectMod.do?value=changefilmId=${details.id }">Change</a>
 
 <br><br>
 <a href = "deleteFilm.do?filmId=${details.id }">Delete</a>

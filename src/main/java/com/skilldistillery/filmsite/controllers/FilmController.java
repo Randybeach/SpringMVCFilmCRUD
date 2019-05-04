@@ -13,19 +13,21 @@ public class FilmController {
 	DatabaseAccessorObject db = new DatabaseAccessorObject();
 	
 	@RequestMapping(path="findFilm.do", params="id", method=RequestMethod.GET)
-	public ModelAndView findFilmById(String ID) {
+	public ModelAndView findFilmById(String id) {
 		ModelAndView mv = new ModelAndView();
 		Film film = null;
 		try {
-			int id = Integer.parseInt(ID);
-			film = db.findFilmById(id);
+			int Id = Integer.parseInt(id);
+			film = db.findFilmById(Id);
 			
-		}catch(Exception e) {}
+		}catch(Exception e) {
+			e.printStackTrace();
+		}
 		if(film == null) {
-			mv.setViewName("WEB-INF/error.jsp");
+			mv.setViewName("/views/error.jsp");
 		}else {
 		mv.addObject("details", film);
-		mv.setViewName("WEB-INF/result.jsp");
+		mv.setViewName("/views/result.jsp");
 		}
 		
 		return mv;
