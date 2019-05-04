@@ -76,15 +76,24 @@ public class FilmController {
 		ModelAndView mv = new ModelAndView();
 		if(value.equals("change")) {
 			mv.addObject("value",value);
-//			ModelAndView mvv = findFilmById(filmId);
-//			mv.addObject("details", mvv.getModelMap());
+			Film film = null;
+			try {
+				int id = Integer.parseInt(filmId);
+				film = db.findFilmById(id);
+				
+			}catch(Exception e) {}
+			if(film == null) {
+				mv.setViewName("WEB-INF/error.jsp");
+			}else {
+			mv.addObject("details", film);
+			}
+			
 		}else if(value.equals("delete")) {
 			mv.addObject("value",value);
 		}else if(value.equals("add")) {
 			mv.addObject("value",value);
 		}
 			
-		
 		mv.setViewName("/views/modify.jsp");
 		return mv;
 	}
