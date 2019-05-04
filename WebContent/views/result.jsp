@@ -26,7 +26,7 @@
 </c:forEach>
 </ol></li>
 </ul>
-<a href = "selectMod.do?value=changefilmId=${details.id }">Change</a>
+<a href = "selectMod.do?value=change&filmId=${details.id }">Change</a>
 
 <br><br>
 <a href = "deleteFilm.do?filmId=${details.id }">Delete</a>
