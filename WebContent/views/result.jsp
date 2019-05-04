@@ -7,6 +7,22 @@
 <title>Insert title here</title>
 </head>
 <body>
+<h1><strong>${details.title }</strong></h1>
+<ul>
+<li><strong>Description:</strong>${details.description }</li>
+<li><strong>Release Year:</strong>${details.release_year }</li>
+<li><strong>Rental Duration:</strong>${details.rental_duration }</li>
+<li><strong>Rental Rate:</strong>${details.rental_rate }</li>
+<li><strong>Length:</strong>${details.length }</li>
+<li><strong>Replacement Cost:</strong>${details.replacement_cost }</li>
+<li><strong>Rating:</strong>${details.rating }</li>
+<li><strong>Special Features:</strong>${details.special_features }</li>
+<li><strong>Cast:</strong>${details.cast }</li>
+</ul>
+<a href = "selectMod.do?value=changefilmId=${details.id }">Delete</a>
+
+<br><br>
+<a href = "deleteFilm.do?filmId=${details.id }">Delete</a>
 
 </body>
 </html>
