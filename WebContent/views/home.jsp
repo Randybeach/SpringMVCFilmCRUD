@@ -9,7 +9,7 @@
 <title>SDMDB</title>
 </head>
 <body>
-<h1>Welome to SDMDB</h1>
+<h1>Welcome to SDMDB</h1>
 <h3>What would you like to do today?</h3>
 <form action = "search.do" method = GET>
 <input type = "text" name = "keyword"><input type = "submit" value = "Search Films">
@@ -20,7 +20,7 @@
 <c:if test="${not empty details }">
 <ul>
 <c:forEach var = "film" items="${details }">
-<li><a href = "findFilm.do?filmId=${film.id}">${film.title }</a></li>
+<li><a href = "findFilm.do?id=${film.id}">${film.title }</a></li>
 </c:forEach>
 </ul>
 </c:if>

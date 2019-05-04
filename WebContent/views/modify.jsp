@@ -51,7 +51,7 @@
 	</c:if>
 	<c:if test="${value == 'add'}">
 		<h2>Your new film</h2>
-		<form action="changeFilm.do" method=POST>
+		<form action="addFilm.do" method=POST>
 			Title:<input type="text" name="title"><br> Description:<input
 				type="text" name="description"><br> Release Year:<input
 				type="text" name="release_year"><br> Rental Duration:<input
