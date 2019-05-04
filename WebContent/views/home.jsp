@@ -14,7 +14,7 @@
 <form action = "search.do" method = GET>
 <input type = "text" name = "keyword"><input type = "submit" value = "Search Films">
 </form><br>
-<form action = "modify.do" method = GET>
+<form action = "modify.do" method = POST>
 <input type = "submit" value = "Modify a Film">
 </form>
 <c:if test="${not empty details }">

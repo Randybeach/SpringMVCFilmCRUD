@@ -14,7 +14,7 @@
 	</h1>
 	Would you like to
 	<br>
-	<form action="selectMod.do" method=GET>
+	<form action="selectMod.do" method=POST>
 		<ul>
 			<li>Change Film:<input type="radio" value="change" name="value">
 				Film ID:<input type="text" name="filmId"></li>

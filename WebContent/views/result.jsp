@@ -11,6 +11,7 @@
 <body>
 <h1><strong>${details.title }</strong></h1>
 <ul>
+<li><strong>ID:</strong>${details.id }</li>
 <li><strong>Description:</strong>${details.description }</li>
 <li><strong>Release Year:</strong>${details.release_year }</li>
 <li><strong>Rental Duration:</strong>${details.rental_duration }</li>
@@ -29,7 +30,7 @@
 <a href = "selectMod.do?value=change&filmId=${details.id }">Change</a>
 
 <br><br>
-<a href = "deleteFilm.do?filmId=${details.id }">Delete</a>
+<a href = "deleteFilm.do?filmId=${details.id}">Delete</a>
 
 </body>
 </html>

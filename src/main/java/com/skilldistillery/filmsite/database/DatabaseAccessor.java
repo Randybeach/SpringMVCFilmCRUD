@@ -11,6 +11,6 @@ public interface DatabaseAccessor {
 	  public List<Actor> findActorsByFilmId(int filmId);
 	  public List<Film> findFilmByKeyword(String keyword);
 	  public Film createFilm(Film film);
-	  public Film deleteFilm(Film film);
+	  public Film deleteFilm(int id);
 	  public Film updateFilm(Film film);
 }

@@ -176,8 +176,8 @@ public class DatabaseAccessorObject implements DatabaseAccessor {
 			ResultSet rs = ps.getGeneratedKeys();
 			if (rs.next()) {
 				System.out.println("New film ID: " + rs.getInt(num));
-				film.setId(num);
-				System.out.println(film);
+				film.setId(rs.getInt(num));
+				System.out.println(film.getId());
 			}
 			conn.commit();
 			return film;
@@ -198,8 +198,11 @@ public class DatabaseAccessorObject implements DatabaseAccessor {
 	}
 
 	@Override
-	public Film deleteFilm(Film f) {
-		Film film = f;
+	public Film deleteFilm(int id) {
+		Film film = findFilmById(id);
+		if(film == null) {
+			return film;
+		}
 		String user = "student";
 		String password = "student";
 		String sql = "DELETE FROM film WHERE id = ?";
