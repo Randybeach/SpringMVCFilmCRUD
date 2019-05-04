@@ -21,7 +21,7 @@ public class Film {
 	private String special_features;
 	private String language;
 	
-	public Film(String title2, String description2, int rental_duration2, int release_year2, double rental_rate2, int length2, double replacement_cost2, String rating2, String special_features2) {
+	public Film(String title2, String description2, int rental_duration2, int release_year2, double rental_rate2, int length2, double replacement_cost2, String rating2, String special_features2, int language_id2) {
 		title = title2;
 		description = description2;
 		rental_duration = rental_duration2;
@@ -31,6 +31,7 @@ public class Film {
 		replacement_cost = replacement_cost2;
 		rating = rating2;
 		special_features = special_features2;
+		language_id = language_id2;
 	}
 	public Film(int id, String title, String description, int release_year, int language_id, int rental_duration,
 			double rental_rate, int length, double replacement_cost, String rating, String special_features, String language, List<Actor> actors) {
@@ -153,16 +154,16 @@ public class Film {
 //		
 //			return "";
 //		}
-		b.append("Cast:");
+//		b.append("Cast:");
 //		if(actors.size()>0) {
-		for (Actor actor : actors) {
-			if(actor.getFirst_name().equals("")) {
-				continue;
-			}
-			b.append(" " + actor+ ",");
+//		for (Actor actor : actors) {
+//			if(actor.getFirst_name().equals("")) {
+//				continue;
+//			}
+//			b.append(" " + actor+ ",");
 //		}
-		}
-		b.setLength(b.length()-1);
+//		}
+//		b.setLength(b.length()-1);
 		return b.toString()+"\n\n"; 
 			
 	}
