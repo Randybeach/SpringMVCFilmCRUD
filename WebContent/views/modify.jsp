@@ -85,7 +85,7 @@
 						    <option value="NC17">NC-17</option>
 						</select><br>
 			Special Features:<input type="text" name="special_features"><br> 
-				<inputtype="submit">
+				<input type="submit">
 		</form>
 	</c:if>
 </body>
