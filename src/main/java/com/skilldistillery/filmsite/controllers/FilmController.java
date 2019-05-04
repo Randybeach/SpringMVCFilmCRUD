@@ -39,9 +39,27 @@ public class FilmController {
 		Film createdFilm = db.createFilm(film);
 		
 		if(createdFilm == null) {
-//			mv.addAllObjects("details", )
+			mv.setViewName("WEB-INF/error.jsp");
+		}else {
+			mv.addObject("details", createdFilm);
+			mv.setViewName("WEB-INF/result.jsp");
 		}
 		
+		
+		return mv;
+	}
+	
+	@RequestMapping(path="deleteFilm.do", method=RequestMethod.POST)
+	public ModelAndView deleteFilm(Film film) {
+		ModelAndView mv = new ModelAndView();
+		Film deletedFilm = db.deleteFilm(film);
+		
+		if(deletedFilm == null) {
+			mv.setViewName("WEB-INF/error.jsp");
+		}else {
+			mv.addObject("details", deletedFilm);
+			mv.setViewName("WEB-INF/result.jsp");
+		}
 		
 		return mv;
 	}
@@ -49,6 +67,23 @@ public class FilmController {
 	@RequestMapping(path="modify.do", method=RequestMethod.GET) 
 	public ModelAndView changeViews() {
 		ModelAndView mv = new ModelAndView();
+		
+		mv.setViewName("/views/modify.jsp");
+		return mv;
+	}
+	@RequestMapping(path="selectMod.do", method=RequestMethod.GET) 
+	public ModelAndView changeView(String value, String filmId) {
+		ModelAndView mv = new ModelAndView();
+		if(value.equals("change")) {
+			mv.addObject("value",value);
+//			ModelAndView mvv = findFilmById(filmId);
+//			mv.addObject("details", mvv.getModelMap());
+		}else if(value.equals("delete")) {
+			mv.addObject("value",value);
+		}else if(value.equals("add")) {
+			mv.addObject("value",value);
+		}
+			
 		
 		mv.setViewName("/views/modify.jsp");
 		return mv;
