@@ -60,7 +60,7 @@ public class FilmController {
 			mv.setViewName("WEB-INF/error.jsp");
 		}else {
 			mv.addObject("details", deletedFilm);
-			mv.setViewName("WEB-INF/result.jsp");
+			mv.setViewName("WEB-INF/home.jsp");
 		}
 		
 		return mv;
@@ -106,6 +106,14 @@ public class FilmController {
 		
 		mv.addObject("details",db.findFilmByKeyword(keyword));
 		mv.setViewName("/views/home.jsp");
+		return mv;
+	}
+	@RequestMapping(path="changeFilm.do", method=RequestMethod.POST) 
+	public ModelAndView updateFilm(Film film) {
+		ModelAndView mv = new ModelAndView();
+		
+		mv.addObject("details",db.updateFilm(film));
+		mv.setViewName("/views/result.jsp");
 		return mv;
 	}
 
