@@ -5,10 +5,11 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
-import com.skilldistillery.film.entities.*;
+
+import com.skilldistillery.film.entities.Actor;
+import com.skilldistillery.film.entities.Film;
 
 public class DatabaseAccessorObject implements DatabaseAccessor {
 
@@ -153,18 +154,30 @@ public class DatabaseAccessorObject implements DatabaseAccessor {
 		Film film = f;
 		String user = "student";
 		String password = "student";
-		String sql = "INSERT into film (title, language_id) values (?, 1)";
+		String sql = "INSERT INTO film  (title, description, release_year, rental_duration, \n" + 
+				"rental_rate, length, replacement_cost, rating, special_features, language_id)\n" + 
+				"VALUES (?,?,?,?,?,?,?,?,?,?);";
 		Connection conn = null;
 		try {
 			conn = DriverManager.getConnection(URL, user, password);
 			conn.setAutoCommit(false);
-			PreparedStatement ps = conn.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
-			ps.setObject(1, film.getTitle());
+			PreparedStatement ps = conn.prepareStatement(sql, PreparedStatement.RETURN_GENERATED_KEYS);
+			ps.setString(1, film.getTitle());
+			ps.setString(2, film.getDescription());
+			ps.setInt(3, film.getRelease_year());
+			ps.setInt(4, film.getRental_duration());
+			ps.setDouble(5, film.getRental_rate());
+			ps.setInt(6, film.getLength());
+			ps.setDouble(7, film.getReplacement_cost());
+			ps.setString(8, film.getRating());
+			ps.setString(9, film.getSpecial_features());
+			ps.setInt(10, film.getLanguage_id());
 			int num = ps.executeUpdate();
 			ResultSet rs = ps.getGeneratedKeys();
 			if (rs.next()) {
 				System.out.println("New film ID: " + rs.getInt(num));
 				film.setId(num);
+				System.out.println(film);
 			}
 			conn.commit();
 			return film;
@@ -221,7 +234,7 @@ public class DatabaseAccessorObject implements DatabaseAccessor {
 		String user = "student";
 		String password = "student";
 		String sql = "UPDATE film SET title = ?, description = ?, release_year = ?, rental_duration = ?, \n"
-				+ "rental_rate = ?, length = ?, replacement_cost = ?, rating = ?, special_features = ?\n"
+				+ "rental_rate = ?, length = ?, replacement_cost = ?, rating = ?, special_features = ?, language_id = ?\n"
 				+ "WHERE id = ?;";
 		Connection conn = null;
 
@@ -239,7 +252,8 @@ public class DatabaseAccessorObject implements DatabaseAccessor {
 			ps.setDouble(7, film.getReplacement_cost());
 			ps.setString(8, film.getRating());
 			ps.setString(9, film.getSpecial_features());
-			ps.setInt(10, film.getId());
+			ps.setInt(10, film.getLanguage_id());
+			ps.setInt(11, film.getId());
 			ps.executeUpdate();
 			System.out.println("You have updated " + film.getTitle());
 			System.out.println(film);
