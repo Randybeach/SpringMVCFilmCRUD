@@ -50,10 +50,10 @@
 						    <option value="NC17">NC-17</option>
 						</form:select><br>
 			Special Features:<br>
-			<form:checkbox path="special_features" value = "Trailers,"/>Trailers<br> 
-			<form:checkbox path="special_features" value = "Commentary,"/>Commentary<br> 
-			<form:checkbox path="special_features" value = "Behind the Scenes,"/>Behind the Scenes<br> 
-			<form:checkbox path="special_features" value = "Deleted Scenes,"/>Deleted Scenes<br> 
+			<form:checkbox path="special_features" value = "Trailers"/>Trailers<br> 
+			<form:checkbox path="special_features" value = "Commentary"/>Commentary<br> 
+			<form:checkbox path="special_features" value = "Behind the Scenes"/>Behind the Scenes<br> 
+			<form:checkbox path="special_features" value = "Deleted Scenes"/>Deleted Scenes<br> 
 			<input type="submit">
 
 		</form:form>
@@ -91,10 +91,10 @@
 						    <option value="NC17">NC-17</option>
 						</form:select><br>
 			Special Features:<br>
-			<form:checkbox path="special_features" value = "Trailers,"/>Trailers<br> 
-			<form:checkbox path="special_features" value = "Commentaries,"/>Commentary<br> 
-			<form:checkbox path="special_features" value = "Behind the Scenes,"/>Behind the Scenes<br> 
-			<form:checkbox path="special_features" value = "Deleted Scenes,"/>Deleted Scenes<br> 
+			<form:checkbox path="special_features" value = "Trailers"/>Trailers<br> 
+			<form:checkbox path="special_features" value = "Commentaries"/>Commentary<br> 
+			<form:checkbox path="special_features" value = "Behind the Scenes"/>Behind the Scenes<br> 
+			<form:checkbox path="special_features" value = "Deleted Scenes"/>Deleted Scenes<br> 
 				<input type="submit">
 		</form:form>
 	</c:if>
