@@ -28,7 +28,9 @@
 </ol></li>
 </ul>
 <%-- <a href = "selectMod.do?value=change&filmId=${details.id}">Change</a> --%>
-<form action="selectMod.do?value=change&filmId=${details.id}" method="GET">
+<form action="selectMod.do" method="GET">
+<input type="hidden" name="value" value="change">
+<input type="hidden" name="filmId" value="${details.id }">
 <input type="submit" value="Change">
 </form>
 <br><br>
