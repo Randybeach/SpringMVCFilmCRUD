@@ -82,7 +82,6 @@
 	<div class="container">
 		<div class="row">
 			<div class="col-6">
-
 				<form action="modify.do" method=GET>
 					<strong>Change an existing film:</strong><input type="submit"
 						value="Modify a Film">
