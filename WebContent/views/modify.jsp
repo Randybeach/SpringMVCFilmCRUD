@@ -61,7 +61,7 @@
 	<c:if test="${value == 'delete'}">
 		<form action="deleteFilm.do" method="POST">
 			<h3>What film would you like to remove</h3>
-			Film Id:<input type="text" name="id"><br> <input
+			Film Id:<input type="text" name="filmId"><br> <input
 				type="submit">
 		</form>
 	</c:if>
