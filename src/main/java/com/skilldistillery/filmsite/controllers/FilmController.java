@@ -44,9 +44,18 @@ public class FilmController {
 	@RequestMapping(path = "addFilm.do", method = RequestMethod.POST)
 	public ModelAndView addFilm(@ModelAttribute("film") @Valid Film film, Errors errors) {
 		ModelAndView mv = new ModelAndView();
+<<<<<<< HEAD
 //		String sf = film.getSpecial_features();
 //		sf = sf.replace("none", "");
 //		film.setSpecial_features(sf);
+=======
+		String sf = film.getSpecial_features();
+		System.out.println(sf);
+		sf = sf.replace(",none", "");
+		sf = sf.replace("none", "");
+		System.out.println(sf);
+		film.setSpecial_features(sf);
+>>>>>>> 010f77603ee55c681bcb63cacdb907bb9b3c9469
 
 
 		if (errors.hasErrors()) {
