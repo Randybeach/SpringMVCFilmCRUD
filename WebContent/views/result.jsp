@@ -32,8 +32,9 @@
 <br><br>
 <a href = "/MVCFilmSite/deleteFilm.do?filmId=${details.id}">Delete</a>
 <br><br>
-<form action="home.do" method="GET">
+<a href = "home.do">Home</a>
+<%-- <form action="home.do" method="GET">
 <input type="submit" value="Home">
-</form>
+</form> --%>
 </body>
 </html>
