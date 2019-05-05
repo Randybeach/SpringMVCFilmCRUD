@@ -56,7 +56,7 @@ public class FilmController {
 		return mv;
 	}
 	
-	@RequestMapping(path="deleteFilm.do", method=RequestMethod.GET)
+	@RequestMapping(path="deleteFilm.do", method=RequestMethod.POST)
 	public ModelAndView deleteFilm(int filmId) {
 		ModelAndView mv = new ModelAndView();
 		Film deletedFilm = db.deleteFilm(filmId);
@@ -121,7 +121,7 @@ public class FilmController {
 		return mv;
 	}
 	
-	@RequestMapping(path="changeFilm.do", method=RequestMethod.GET) 
+	@RequestMapping(path="changeFilm.do", method=RequestMethod.POST) 
 	public ModelAndView updateFilm(@ModelAttribute("film") Film film) {
 		ModelAndView mv = new ModelAndView();
 		System.out.println("film id is :" + film.getId());
