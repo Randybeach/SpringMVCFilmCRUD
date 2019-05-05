@@ -29,7 +29,7 @@
 			ID:<form:input path="id" value="${details.id }" readonly="true"/><br>
 			Title:<form:input path="title" value="${details.title }"/><br>
 			Description:<form:input path="description" value="${details.description }"/><br> 
-			Release Year:<form:input path="release_year" value="${details.release_year }"/><br>
+			Release Year:<form:input path="release_year" value="${details.release_year }"/><form:errors path="release_year"/><br>
 			Rental Duration:<form:input path="rental_duration" value="${details.rental_duration }"/><br> 
 			Rental Rate:<form:input path="rental_rate" value="${details.rental_rate }"/><br>
 			Length:<form:input path="length" value="${details.length }"/><br>
@@ -69,12 +69,12 @@
 		<h2>Your new film</h2>
 		<form:form action="addFilm.do" method="POST" modelAttribute="film">
 			Title:<form:input path="title" /><br>
-			Description:<form:input type="text" path="description"/><br> 
-			Release Year:<form:input type="text" path="release_year"/><br> 
-			Rental Duration:<form:input type="text" path="rental_duration"/><br> 
-			Rental Rate:<form:input type="text" path="rental_rate"/><br> 
-			Length:<form:input type="text" path="length"/><br> 
-			Replacement Cost:<form:input type="text" path="replacement_cost"/><br> 
+			Description:<form:input path="description"/><br> 
+			Release Year:<form:input path="release_year"/><form:errors path="release_year"/><br> 
+			Rental Duration:<form:input path="rental_duration"/><br> 
+			Rental Rate:<form:input path="rental_rate"/><br> 
+			Length:<form:input path="length"/><br> 
+			Replacement Cost:<form:input path="replacement_cost"/><br> 
 			Language:<form:select path="language_id">
 						    <option value="1">English</option>
 						    <option value="2">Italian</option>
