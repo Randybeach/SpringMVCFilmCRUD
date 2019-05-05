@@ -42,7 +42,9 @@ public class FilmController {
 			method=RequestMethod.POST)
 	public ModelAndView addFilm(@ModelAttribute("film") Film film) {
 		ModelAndView mv = new ModelAndView();
-		System.out.println(film.getSpecial_features());
+		String sf = film.getSpecial_features();
+		sf = sf.replace("none", "");
+		film.setSpecial_features(sf);
 		
 		Film createdFilm = db.createFilm(film);
 		

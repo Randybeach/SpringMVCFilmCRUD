@@ -135,6 +135,9 @@ public class Film {
 	public String getSpecial_features() {
 		return special_features;
 	}
+	public void setSpecial_features(String features) {
+		this.special_features = features;
+	}
 	public void setSpecial_features(List<String> featuresList) {
 		String features = "";
 		if(featuresList == null) {
