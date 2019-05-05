@@ -5,5 +5,11 @@ background-color: rgba(255, 255, 255, 0.7) !important;
 }
 
 li {
+	font-weight: bold;	
+}
+
+.head {
 	font-weight: bold;
+	font-size: 50px;
+	font-family: impact;
 }

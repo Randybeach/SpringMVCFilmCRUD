@@ -57,12 +57,12 @@
 	</div>
 	<div class="row">
 		<div class="col-4 offset-4">
-			<h1>Welcome to SDMDB</h1>
+			<h1 class="head">Welcome to SDMDB</h1>
 		</div>
 	</div>
 	<div class="container">
 
-		<h3>What would you like to do today?</h3>
+		<h3 class="subhead">What would you like to do today?</h3>
 	</div>
 	<div class="container">
 		<div class="row">

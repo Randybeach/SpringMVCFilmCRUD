@@ -188,7 +188,6 @@ public class DatabaseAccessorObject implements DatabaseAccessor {
 			if (rs.next()) {
 				System.out.println("New film ID: " + rs.getInt(num));
 				film.setId(rs.getInt(num));
-				System.out.println(film.getId());
 			}
 			conn.commit();
 			return film;
@@ -287,7 +286,40 @@ public class DatabaseAccessorObject implements DatabaseAccessor {
 			System.out.println(e);
 			return null;
 		}
+		
 
 	}
+	@Override
+	public void updateFilmCategory(int filmId, int catId) {
+		String user = "student";
+		String password = "student";
+		String sql ="insert into film_category (film_id, category_id) values (?,?); ";
+		
+				Connection conn = null;
+		try {
+			conn = DriverManager.getConnection(URL, user, password);
+			conn.setAutoCommit(false);
+			PreparedStatement ps = conn.prepareStatement(sql, PreparedStatement.RETURN_GENERATED_KEYS);
+			ps.setInt(1, filmId);
+			ps.setInt(2, catId);
+		int num = ps.executeUpdate();
+		ResultSet rs = ps.getGeneratedKeys();
+	
+		conn.commit();
+		
+
+	} catch (SQLException e) {
+		if (conn != null) {
+			try {
+				conn.rollback();
+			} catch (SQLException sqle) {
+				System.err.println("Error trying to rollback");
+			}
+		}
+		System.out.println(e);
+	}
+
+}
+
 
 }
