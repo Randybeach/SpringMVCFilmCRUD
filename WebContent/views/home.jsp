@@ -14,7 +14,7 @@
 <form action = "search.do" method = GET>
 <input type = "text" name = "keyword"><input type = "submit" value = "Search Films">
 </form><br>
-<form action = "modify.do" method = POST>
+<form action = "modify.do" method = GET>
 <input type = "submit" value = "Modify a Film">
 </form>
 <c:if test="${not empty details }">
@@ -22,6 +22,12 @@
 <c:forEach var = "film" items="${details }">
 <li><a href = "findFilm.do?id=${film.id}">${film.title }</a></li>
 </c:forEach>
+</ul>
+</c:if>
+<c:if test="${not empty deleted }"><br>
+Deleted
+<ul>
+<li>${deleted.title }</li>
 </ul>
 </c:if>
 </body>

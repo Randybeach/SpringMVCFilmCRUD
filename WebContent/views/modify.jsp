@@ -26,6 +26,7 @@
 	<c:if test="${value == 'change' }">
 		<h2>What fields would you like to change?</h2>
 		<form:form action="changeFilm.do" method="GET" modelAttribute="film">
+			ID:<form:input path="id" value="${details.id }" readonly="true"/><br>
 			Title:<form:input path="title" value="${details.title }"/><br>
 			Description:<form:input path="description" value="${details.description }"/><br> 
 			Release Year:<form:input path="release_year" value="${details.release_year }"/><br>
@@ -95,7 +96,7 @@
 			<input type="checkbox" name="special_features" value = "Behind the Scenes,">Behind the Scenes<br> 
 				<input type="checkbox" name="special_features" value = "Deleted Scenes,">Deleted Scenes<br> --> 
 			<form:checkbox path="special_features" value = "Trailers,"/>Trailers<br> 
-			<form:checkbox path="special_features" value = "Commentary,"/>Commentary<br> 
+			<form:checkbox path="special_features" value = "Commentaries,"/>Commentary<br> 
 			<form:checkbox path="special_features" value = "Behind the Scenes,"/>Behind the Scenes<br> 
 			<form:checkbox path="special_features" value = "Deleted Scenes,"/>Deleted Scenes<br> 
 				<input type="submit">

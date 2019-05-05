@@ -234,6 +234,7 @@ public class DatabaseAccessorObject implements DatabaseAccessor {
 	@Override
 	public Film updateFilm(Film f) {
 		Film film = f;
+		System.out.println("from DBAO special features " + film.getSpecial_features());
 		String user = "student";
 		String password = "student";
 		String sql = "UPDATE film SET title = ?, description = ?, release_year = ?, rental_duration = ?, \n"

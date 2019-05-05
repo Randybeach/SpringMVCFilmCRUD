@@ -135,8 +135,18 @@ public class Film {
 	public String getSpecial_features() {
 		return special_features;
 	}
-	public void setSpecial_features(String special_features) {
-		this.special_features = special_features;
+	public void setSpecial_features(List<String> featuresList) {
+		String features = "";
+			for (int i = 0; i < featuresList.size(); i++) {
+				if(i != 0) {
+					features = features + featuresList.get(i);
+				}else {
+					features = featuresList.get(i);
+				}
+			}
+//			features = features.substring(0, features.length());
+			System.out.println(features);
+		this.special_features = features;
 	}
 	
 	public List<Actor> getActors() {

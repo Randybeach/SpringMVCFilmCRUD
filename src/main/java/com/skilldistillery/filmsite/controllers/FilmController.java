@@ -25,6 +25,8 @@ public class FilmController {
 			e.printStackTrace();
 		}
 		if(film == null) {
+//			mv.addObject("details", film);
+//			mv.setViewName("/views/result.jsp");
 			mv.setViewName("/views/error.jsp");
 		}else {
 		mv.addObject("details", film);
@@ -38,6 +40,7 @@ public class FilmController {
 			method=RequestMethod.POST)
 	public ModelAndView addFilm(@ModelAttribute("film") Film film) {
 		ModelAndView mv = new ModelAndView();
+		System.out.println(film.getSpecial_features());
 	
 		
 		Film createdFilm = db.createFilm(film);
@@ -68,7 +71,7 @@ public class FilmController {
 		return mv;
 	}
 	
-	@RequestMapping(path="modify.do", method=RequestMethod.POST) 
+	@RequestMapping(path="modify.do", method=RequestMethod.GET) 
 	public ModelAndView changeViews() {
 		ModelAndView mv = new ModelAndView();
 		
@@ -88,20 +91,24 @@ public class FilmController {
 				
 			}catch(Exception e) {}
 			if(film == null) {
+//				System.out.println("The film is null");
+				mv.addObject("film", new Film());
 				mv.setViewName("/views/error.jsp");
 			}else {
 			mv.addObject("film", new Film());
 			mv.addObject("details", film);
+			mv.setViewName("/views/modify.jsp");
 			}
 			
 		}else if(value.equals("delete")) {
 			mv.addObject("value",value);
+			mv.setViewName("/views/modify.jsp");
 		}else if(value.equals("add")) {
 			mv.addObject("film", new Film());
 			mv.addObject("value",value);
+			mv.setViewName("/views/modify.jsp");
 		}
 			
-		mv.setViewName("/views/modify.jsp");
 		return mv;
 	}
 	
@@ -117,9 +124,17 @@ public class FilmController {
 	@RequestMapping(path="changeFilm.do", method=RequestMethod.GET) 
 	public ModelAndView updateFilm(@ModelAttribute("film") Film film) {
 		ModelAndView mv = new ModelAndView();
+		System.out.println("film id is :" + film.getId());
 		
 		mv.addObject("details",db.updateFilm(film));
 		mv.setViewName("/views/result.jsp");
+		return mv;
+	}
+	@RequestMapping(path="home.do", method=RequestMethod.GET) 
+	public ModelAndView home() {
+		ModelAndView mv = new ModelAndView();
+		
+		mv.setViewName("/views/home.jsp");
 		return mv;
 	}
 
