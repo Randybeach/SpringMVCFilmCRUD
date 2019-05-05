@@ -165,5 +165,12 @@ public class FilmController {
 		mv.setViewName("/views/home.jsp");
 		return mv;
 	}
+	@RequestMapping(path = "rick.do", method = RequestMethod.GET)
+	public ModelAndView rick() {
+		ModelAndView mv = new ModelAndView();
+		
+		mv.setViewName("/views/rick.jsp");
+		return mv;
+	}
 
 }

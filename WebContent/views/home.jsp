@@ -38,7 +38,7 @@
 								</form>
 								</li>
 								<li class="nav-item">
-									<form action="https://www.youtube.com/watch?v=dQw4w9WgXcQ" target="_blank">
+									<form action="rick.do" method="GET" target="_blank">
 										<input type="submit" value="Rick">
 									</form>
 								</li>
