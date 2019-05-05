@@ -7,6 +7,8 @@
 <head>
 <meta charset="UTF-8">
 <title>Modify Films</title>
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
 </head>
 <body>
 	<h1>
@@ -19,9 +21,9 @@
 			<li>Change Film:<input type="radio" value="change" name="value">
 				Film ID:<input type="text" name="filmId"></li>
 			<li>Delete Film:<input type="radio" value="delete" name="value"></li>
-			<li>Add Film:<input type="radio" value="add" name="value"></li>
+			<li>Add Film:<input type="radio" value="add" name="value" checked="checked"></li>
 		</ul>
-		<br> <input type="submit">
+		<br> <button type="submit" class="btn btn-primary">Submit</button>
 	</form>
 	<c:if test="${value == 'change' }">
 		<h2>What fields would you like to change?</h2>
@@ -89,15 +91,17 @@
 			<form:checkbox path="special_features" value="Commentaries" />Commentary<br>
 			<form:checkbox path="special_features" value="Behind the Scenes" />Behind the Scenes<br>
 			<form:checkbox path="special_features" value="Deleted Scenes" />Deleted Scenes<br>
-			<input type="submit">
+			<button type="submit" class="btn btn-primary">Submit</button>
+			<!-- <input type="submit"> -->
 
 		</form:form>
 	</c:if>
 	<c:if test="${value == 'delete'}">
 		<form action="deleteFilm.do" method="POST">
 			<h3>What film would you like to remove</h3>
-			Film Id:<input type="text" name="filmId"><br> <input
-				type="submit">
+			Film Id:<input type="text" name="filmId"><br> 
+			<button type="button" class="btn btn-danger">Delete</button>
+			<!-- <input type="submit"> -->
 		</form>
 	</c:if>
 	<c:if test="${value == 'add'}">
@@ -159,11 +163,16 @@
 			<form:checkbox path="special_features" value="Commentaries" />Commentary<br>
 			<form:checkbox path="special_features" value="Behind the Scenes" />Behind the Scenes<br>
 			<form:checkbox path="special_features" value="Deleted Scenes" />Deleted Scenes<br>
-			<input type="submit">
+			<button type="submit" class="btn btn-primary">Submit</button>
+			<!-- <input type="submit"> -->
 			<form:checkbox path="special_features" value="none" style="opacity:0"
 				checked="checked" />
 			<br>
 		</form:form>
 	</c:if>
+	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+	
 </body>
 </html>
