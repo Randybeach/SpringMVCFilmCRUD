@@ -46,7 +46,7 @@ public class DatabaseAccessorObject implements DatabaseAccessor {
 						rs.getInt("film.rental_duration"), rs.getDouble("film.rental_rate"), rs.getInt("film.length"),
 						rs.getDouble("film.replacement_cost"), rs.getString("film.rating"),
 						rs.getString("film.special_features"), rs.getString("language.name"),
-						rs.getString("category.id"), findActorsByFilmId(rs.getInt("id")));
+						rs.getString("category.name"), findActorsByFilmId(rs.getInt("id")));
 			}
 			conn.close();
 			if (film == null) {
@@ -120,12 +120,12 @@ public class DatabaseAccessorObject implements DatabaseAccessor {
 		String user = "student";
 		String password = "student";
 //		String sql = "SELECT * FROM film WHERE film.title like ? or film.description like ?";
-		String sql = "SELECT film.id, film.title, film.description, film.release_year, film.language_id, film.rental_duration, \n"
-				+ "film.rental_rate, film.length, film.replacement_cost, film.rating, film.special_features, language.name, category.name \n"
-				+ "FROM film JOIN language \n"
-				+ "ON film.language_id = language.id JOIN film_category on film.id = film_category.film_id\n"
-				+ "JOIN category ON film_category.category_id = category.id\n"
-				+ "WHERE (film.title like ?) or (film.description like ?);";
+		String sql = "SELECT film.id, film.title, film.description, film.release_year, film.language_id, film.rental_duration, \n" + 
+				"film.rental_rate, film.length, film.replacement_cost, film.rating, film.special_features, language.name, category.name \n" + 
+				"FROM film JOIN language \n" + 
+				"ON film.language_id = language.id JOIN film_category on film.id = film_category.film_id\n" + 
+				"JOIN category ON film_category.category_id = category.id\n" + 
+				"WHERE (film.title like ?) or (film.description like ?);";
 //		String sql = "SELECT film.id, title, description, release_year, language_id, rental_duration, rental_rate, length, replacement_cost, rating, special_features, language.name, actor.first_name, actor.last_name FROM film JOIN film_actor on actor.id = film_actor.actor_id JOIN film on film_actor.film_id = film.id JOIN language on film.language_id = language.id WHERE film.title like ? or film.description like ?";
 		try {
 			Connection conn = DriverManager.getConnection(URL, user, password);
