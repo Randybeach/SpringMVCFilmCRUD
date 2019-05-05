@@ -137,7 +137,6 @@ public class DatabaseAccessorObject implements DatabaseAccessor {
 			if (films.size() > 0) {
 				return films;
 			} else {
-				films.add(new Film(""));
 
 				return films;
 			}

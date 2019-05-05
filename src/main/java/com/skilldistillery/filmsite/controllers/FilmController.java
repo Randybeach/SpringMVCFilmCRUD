@@ -1,6 +1,10 @@
 package com.skilldistillery.filmsite.controllers;
 
+<<<<<<< HEAD
 import javax.validation.Valid;
+=======
+import java.util.List;
+>>>>>>> 03d33d906afbf9f25d41e8305debf0d3f66246bb
 
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.Errors;
@@ -44,7 +48,6 @@ public class FilmController {
 	public ModelAndView addFilm(@ModelAttribute("film") @Valid Film film, Errors errors) {
 		ModelAndView mv = new ModelAndView();
 		System.out.println(film.getSpecial_features());
-	
 		
 		Film createdFilm = db.createFilm(film);
 		
@@ -125,15 +128,21 @@ public class FilmController {
 	@RequestMapping(path="search.do", params="keyword", method=RequestMethod.GET) 
 	public ModelAndView searchFilm(String keyword) {
 		ModelAndView mv = new ModelAndView();
-		
-		mv.addObject("details",db.findFilmByKeyword(keyword));
-		mv.setViewName("/views/home.jsp");
+		List<Film> films = db.findFilmByKeyword(keyword);
+		if(films.size()==0) {
+			
+			mv.setViewName("/views/error.jsp");
+		}else {
+			mv.addObject("details",films);
+			mv.setViewName("/views/home.jsp");
+		}
 		return mv;
 	}
 	
 	@RequestMapping(path="changeFilm.do", method=RequestMethod.POST) 
 	public ModelAndView updateFilm(@ModelAttribute("film") Film film) {
 		ModelAndView mv = new ModelAndView();
+		
 		System.out.println("film id is :" + film.getId());
 		
 		mv.addObject("details",db.updateFilm(film));

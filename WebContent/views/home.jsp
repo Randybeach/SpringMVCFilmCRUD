@@ -17,18 +17,20 @@
 <form action = "modify.do" method = GET>
 <input type = "submit" value = "Modify a Film">
 </form>
-<c:if test="${not empty details }">
+<c:choose>
+<c:when test="${details.size() gt 0 }">
 <ul>
 <c:forEach var = "film" items="${details }">
 <li><a href = "findFilm.do?id=${film.id}">${film.title }</a></li>
 </c:forEach>
 </ul>
-</c:if>
-<c:if test="${not empty deleted }"><br>
+</c:when>
+<c:when test="${not empty deleted }">
 Deleted
 <ul>
 <li>${deleted.title }</li>
 </ul>
-</c:if>
+</c:when>
+</c:choose>
 </body>
 </html>

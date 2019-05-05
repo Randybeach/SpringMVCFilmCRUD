@@ -140,6 +140,9 @@ public class Film {
 	}
 	public void setSpecial_features(List<String> featuresList) {
 		String features = "";
+		if(featuresList == null) {
+			this.special_features = "";
+		}
 			for (int i = 0; i < featuresList.size(); i++) {
 				if(i == 0) {
 					features = featuresList.get(i)+ ",";
