@@ -121,10 +121,10 @@ public class FilmController {
 		if(films.size()==0) {
 			
 			mv.setViewName("/views/error.jsp");
+		}else {
+			mv.addObject("details",films);
+			mv.setViewName("/views/home.jsp");
 		}
-		
-		mv.addObject("details",films);
-		mv.setViewName("/views/home.jsp");
 		return mv;
 	}
 	
