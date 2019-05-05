@@ -47,7 +47,6 @@ public class FilmController {
 		String sf = film.getSpecial_features();
 		sf = sf.replace(",none", "");
 		sf = sf.replace("none", "");
-		System.out.println(sf);
 		film.setSpecial_features(sf);
 
 
