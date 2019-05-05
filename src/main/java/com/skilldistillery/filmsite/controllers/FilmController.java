@@ -45,10 +45,12 @@ public class FilmController {
 	public ModelAndView addFilm(@ModelAttribute("film") @Valid Film film, Errors errors) {
 		ModelAndView mv = new ModelAndView();
 		String sf = film.getSpecial_features();
+
 		sf = sf.replace(",none", "");
 		sf = sf.replace("none", "");
+		System.out.println(sf);
 		film.setSpecial_features(sf);
-		
+
 
 
 		if (errors.hasErrors()) {
