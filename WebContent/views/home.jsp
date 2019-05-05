@@ -107,5 +107,15 @@ Deleted
 			</c:choose>
 		</div>
 	</div>
+	<div>
+	
+	</div>
 </body>
 </html>
+<style>
+body{
+background-color: rgba(255, 255, 255, 0.7) !important;
+background-image:url(https://thumbs.dreamstime.com/t/old-grunge-film-strip-background-32023216.jpg);
+}
+
+</style>
