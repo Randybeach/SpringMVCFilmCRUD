@@ -56,7 +56,7 @@ public class FilmController {
 		return mv;
 	}
 	
-	@RequestMapping(path="deleteFilm.do", method=RequestMethod.GET)
+	@RequestMapping(path="deleteFilm.do", method=RequestMethod.POST)
 	public ModelAndView deleteFilm(int filmId) {
 		ModelAndView mv = new ModelAndView();
 		Film deletedFilm = db.deleteFilm(filmId);
