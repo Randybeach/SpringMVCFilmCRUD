@@ -29,10 +29,10 @@ public class FilmController {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		if (film == null) {
+		 if (film == null) {
 //			mv.addObject("details", film);
 //			mv.setViewName("/views/result.jsp");
-			mv.setViewName("/views/error.jsp");
+			mv.setViewName("/views/home.jsp");
 		} else {
 			mv.addObject("details", film);
 			mv.setViewName("/views/result.jsp");

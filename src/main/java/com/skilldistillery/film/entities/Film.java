@@ -23,11 +23,12 @@ public class Film {
 	private String special_features;
 	private String language;
 	private String category;
+	private int categoryId;
 	
 	public Film() {
 		
 	}
-	public Film(String title2, String description2, int rental_duration2, int release_year2, double rental_rate2, int length2, double replacement_cost2, String rating2, String special_features2, int language_id2, String category) {
+	public Film(String title2, String description2, int rental_duration2, int release_year2, double rental_rate2, int length2, double replacement_cost2, String rating2, String special_features2, int language_id2, String category, int categoryId) {
 		title = title2;
 		description = description2;
 		rental_duration = rental_duration2;
@@ -39,6 +40,7 @@ public class Film {
 		special_features = special_features2;
 		language_id = language_id2;
 		this.category = category;
+		this.categoryId = categoryId;
 	}
 	public Film(int id, String title, String description, int release_year, int language_id, int rental_duration,
 			double rental_rate, int length, double replacement_cost, String rating, String special_features, String language, String category, List<Actor> actors) {
@@ -67,8 +69,15 @@ public class Film {
 		this.title = title;
 	}
 
+	
 
 
+	public int getCategoryId() {
+		return categoryId;
+	}
+	public void setCategoryId(int categoryId) {
+		this.categoryId = categoryId;
+	}
 	public String getLanguage() {
 		return language;
 	}
