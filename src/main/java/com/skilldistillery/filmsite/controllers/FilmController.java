@@ -45,17 +45,9 @@ public class FilmController {
 	public ModelAndView addFilm(@ModelAttribute("film") @Valid Film film, Errors errors) {
 		ModelAndView mv = new ModelAndView();
 		String sf = film.getSpecial_features();
-<<<<<<< HEAD
-
 		sf = sf.replace(",none", "");
-=======
->>>>>>> 633eae35dd18db2dfc4fc22e072eda83669be0c6
 		sf = sf.replace("none", "");
 		film.setSpecial_features(sf);
-<<<<<<< HEAD
-
-=======
->>>>>>> 633eae35dd18db2dfc4fc22e072eda83669be0c6
 
 
 		if (errors.hasErrors()) {
