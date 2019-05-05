@@ -43,7 +43,6 @@ public class FilmController {
 	public ModelAndView addFilm(@ModelAttribute("film") Film film) {
 		ModelAndView mv = new ModelAndView();
 		System.out.println(film.getSpecial_features());
-	
 		
 		Film createdFilm = db.createFilm(film);
 		
