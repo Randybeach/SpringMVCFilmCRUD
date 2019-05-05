@@ -2,7 +2,8 @@ package com.skilldistillery.film.entities;
 
 import java.util.List;
 
-import javax.validation.constraints.Size;
+import javax.validation.constraints.Max;
+import javax.validation.constraints.Min;
 
 public class Film {
 
@@ -10,7 +11,8 @@ public class Film {
 	private int id;
 	private String title;
 	private String description;
-	@Size(min=1901, max=2099)
+	@Min(1901)
+	@Max(2099)
 	private int release_year;
 	private int language_id;
 	private int rental_duration;

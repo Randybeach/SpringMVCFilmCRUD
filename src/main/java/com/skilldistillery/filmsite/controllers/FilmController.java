@@ -137,10 +137,15 @@ public class FilmController {
 	}
 	
 	@RequestMapping(path="changeFilm.do", method=RequestMethod.POST) 
-	public ModelAndView updateFilm(@ModelAttribute("film") Film film) {
+	public ModelAndView updateFilm(@ModelAttribute("film") @Valid Film film, Errors errors) {
 		ModelAndView mv = new ModelAndView();
 		
-		System.out.println("film id is :" + film.getId());
+//		System.out.println("film id is :" + film.getId());
+		if(errors.hasErrors()) {
+			mv.addObject("value", "add");
+		    mv.setViewName("/views/modify.jsp");
+		    return mv;
+		  }
 		
 		mv.addObject("details",db.updateFilm(film));
 		mv.setViewName("/views/result.jsp");
