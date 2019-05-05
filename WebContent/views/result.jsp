@@ -27,14 +27,19 @@
 </c:forEach>
 </ol></li>
 </ul>
-<a href = "selectMod.do?value=change&filmId=${details.id}">Change</a>
-
+<%-- <a href = "selectMod.do?value=change&filmId=${details.id}">Change</a> --%>
+<form action="selectMod.do?value=change&filmId=${details.id}" method="GET">
+<input type="submit" value="Change">
+</form>
 <br><br>
-<a href = "/MVCFilmSite/deleteFilm.do?filmId=${details.id}">Delete</a>
+<%-- <a href = "deleteFilm.do?filmId=${details.id}">Delete</a> --%>
+<form action="deleteFilm.do?filmId=${details.id}" method="POST">
+<input type="submit" value="Delete">
+</form>
 <br><br>
-<a href = "home.do">Home</a>
-<%-- <form action="home.do" method="GET">
+<!-- <a href = "home.do">Home</a> -->
+<form action="home.do" method="GET">
 <input type="submit" value="Home">
-</form> --%>
+</form>
 </body>
 </html>
