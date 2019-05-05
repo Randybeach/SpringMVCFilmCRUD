@@ -91,10 +91,6 @@
 						    <option value="NC17">NC-17</option>
 						</form:select><br>
 			Special Features:<br>
-			<!-- <input type="checkbox" name="special_features" value = "Trailers,">Trailers<br> 
-			<input type="checkbox" name="special_features" value = "Commentary,">Commentary<br> 
-			<input type="checkbox" name="special_features" value = "Behind the Scenes,">Behind the Scenes<br> 
-				<input type="checkbox" name="special_features" value = "Deleted Scenes,">Deleted Scenes<br> --> 
 			<form:checkbox path="special_features" value = "Trailers,"/>Trailers<br> 
 			<form:checkbox path="special_features" value = "Commentaries,"/>Commentary<br> 
 			<form:checkbox path="special_features" value = "Behind the Scenes,"/>Behind the Scenes<br> 
