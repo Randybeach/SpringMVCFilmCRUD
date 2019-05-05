@@ -65,7 +65,7 @@
 				<option value="NC17">NC-17</option>
 			</form:select>
 			<br>
-			Categories:  <form:select path="categories">
+			Categories:  <form:select path="category">
 				<option value="1">Action</option>
 				<option value="2">Animation</option>
 				<option value="3">Children</option>
@@ -135,7 +135,7 @@
 				<option value="NC17">NC-17</option>
 			</form:select>
 			<br>
-			Categories:  <form:select path="categories">
+			Categories:  <form:select path="category">
 				<option value="1">Action</option>
 				<option value="2">Animation</option>
 				<option value="3">Children</option>
