@@ -1,6 +1,9 @@
 package com.skilldistillery.filmsite.controllers;
 
+import javax.validation.Valid;
+
 import org.springframework.stereotype.Controller;
+import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -38,12 +41,18 @@ public class FilmController {
 	
 	@RequestMapping(path="addFilm.do", 
 			method=RequestMethod.POST)
-	public ModelAndView addFilm(@ModelAttribute("film") Film film) {
+	public ModelAndView addFilm(@ModelAttribute("film") @Valid Film film, Errors errors) {
 		ModelAndView mv = new ModelAndView();
 		System.out.println(film.getSpecial_features());
 	
 		
 		Film createdFilm = db.createFilm(film);
+		
+		if(errors.hasErrors()) {
+			mv.addObject("value", "add");
+		    mv.setViewName("/views/modify.jsp");
+		    return mv;
+		  }
 		
 		if(createdFilm == null) {
 			mv.setViewName("/views/error.jsp");
@@ -82,6 +91,7 @@ public class FilmController {
 	@RequestMapping(path="selectMod.do", method=RequestMethod.GET) 
 	public ModelAndView changeView(String value, String filmId) {
 		ModelAndView mv = new ModelAndView();
+		System.out.println("value: " + value +"/nId; " + filmId);
 		if(value.equals("change")) {
 			mv.addObject("value",value);
 			Film film = null;
