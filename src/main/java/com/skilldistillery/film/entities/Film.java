@@ -138,13 +138,13 @@ public class Film {
 	public void setSpecial_features(List<String> featuresList) {
 		String features = "";
 			for (int i = 0; i < featuresList.size(); i++) {
-				if(i != 0) {
-					features = features + featuresList.get(i);
+				if(i == 0) {
+					features = featuresList.get(i)+ ",";
 				}else {
-					features = featuresList.get(i);
+					features += featuresList.get(i) + ",";
 				}
 			}
-//			features = features.substring(0, features.length());
+			features = features.substring(0, features.length()-1);
 			System.out.println(features);
 		this.special_features = features;
 	}

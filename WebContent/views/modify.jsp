@@ -51,7 +51,7 @@
 						</form:select><br>
 			Special Features:<br>
 			<form:checkbox path="special_features" value = "Trailers"/>Trailers<br> 
-			<form:checkbox path="special_features" value = "Commentary"/>Commentary<br> 
+			<form:checkbox path="special_features" value = "Commentaries"/>Commentary<br> 
 			<form:checkbox path="special_features" value = "Behind the Scenes"/>Behind the Scenes<br> 
 			<form:checkbox path="special_features" value = "Deleted Scenes"/>Deleted Scenes<br> 
 			<input type="submit">
