@@ -22,11 +22,12 @@ public class Film {
 	private String rating;
 	private String special_features;
 	private String language;
+	private String category;
 	
 	public Film() {
 		
 	}
-	public Film(String title2, String description2, int rental_duration2, int release_year2, double rental_rate2, int length2, double replacement_cost2, String rating2, String special_features2, int language_id2) {
+	public Film(String title2, String description2, int rental_duration2, int release_year2, double rental_rate2, int length2, double replacement_cost2, String rating2, String special_features2, int language_id2, String category) {
 		title = title2;
 		description = description2;
 		rental_duration = rental_duration2;
@@ -37,9 +38,10 @@ public class Film {
 		rating = rating2;
 		special_features = special_features2;
 		language_id = language_id2;
+		this.category = category;
 	}
 	public Film(int id, String title, String description, int release_year, int language_id, int rental_duration,
-			double rental_rate, int length, double replacement_cost, String rating, String special_features, String language, List<Actor> actors) {
+			double rental_rate, int length, double replacement_cost, String rating, String special_features, String language, String category, List<Actor> actors) {
 		super();
 		this.id = id;
 		this.title = title;
@@ -54,6 +56,7 @@ public class Film {
 		this.special_features = special_features;
 		this.language = language;
 		this.actors = actors;
+		this.category = category;
 		
 	}
 	
@@ -143,6 +146,13 @@ public class Film {
 	public void setSpecial_features(String features) {
 		this.special_features = features;
 	}
+	
+	public String getCategory() {
+		return category;
+	}
+	public void setCategory(String category) {
+		this.category = category;
+	}
 	public void setSpecial_features(List<String> featuresList) {
 		String features = "";
 		if(featuresList == null) {
@@ -192,6 +202,7 @@ public class Film {
 		final int prime = 31;
 		int result = 1;
 		result = prime * result + ((actors == null) ? 0 : actors.hashCode());
+		result = prime * result + ((category == null) ? 0 : category.hashCode());
 		result = prime * result + ((description == null) ? 0 : description.hashCode());
 		result = prime * result + id;
 		result = prime * result + ((language == null) ? 0 : language.hashCode());
@@ -222,6 +233,11 @@ public class Film {
 			if (other.actors != null)
 				return false;
 		} else if (!actors.equals(other.actors))
+			return false;
+		if (category == null) {
+			if (other.category != null)
+				return false;
+		} else if (!category.equals(other.category))
 			return false;
 		if (description == null) {
 			if (other.description != null)

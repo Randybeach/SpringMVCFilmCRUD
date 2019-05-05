@@ -29,18 +29,24 @@ public class DatabaseAccessorObject implements DatabaseAccessor {
 		Film film = null;
 		String user = "student";
 		String password = "student";
-		String sql = "SELECT film.id, title, description, release_year, language_id, rental_duration, rental_rate, length, replacement_cost, rating, special_features, language.name FROM film JOIN language on film.language_id = language.id WHERE film.id = ?";
+		String sql = "SELECT film.id, film.title, film.description, film.release_year, film.language_id, \n"
+				+ "film.rental_duration, film.rental_rate, film.length, film.replacement_cost, film.rating, \n"
+				+ "film.special_features, language.name, category.name\n"
+				+ "FROM film JOIN language ON film.language_id = language.id \n"
+				+ "JOIN film_category on film.id = film_category.film_id\n"
+				+ "JOIN category ON film_category.category_id = category.id\n" + "WHERE film.id = ?;";
 		try {
 			Connection conn = DriverManager.getConnection(URL, user, password);
 			PreparedStatement ps = conn.prepareStatement(sql);
 			ps.setInt(1, filmId);
 			ResultSet rs = ps.executeQuery();
 			if (rs.next()) {
-				film = new Film(rs.getInt("id"), rs.getString("title"), rs.getString("description"),
-						rs.getInt("release_year"), rs.getInt("language_id"), rs.getInt("rental_duration"),
-						rs.getDouble("rental_rate"), rs.getInt("length"), rs.getDouble("replacement_cost"),
-						rs.getString("rating"), rs.getString("special_features"), rs.getString("language.name"),
-						findActorsByFilmId(rs.getInt("id")));
+				film = new Film(rs.getInt("film.id"), rs.getString("film.title"), rs.getString("film.description"),
+						rs.getInt("film.release_year"), rs.getInt("film.language_id"),
+						rs.getInt("film.rental_duration"), rs.getDouble("film.rental_rate"), rs.getInt("film.length"),
+						rs.getDouble("film.replacement_cost"), rs.getString("film.rating"),
+						rs.getString("film.special_features"), rs.getString("language.name"),
+						rs.getString("category.id"), findActorsByFilmId(rs.getInt("id")));
 			}
 			conn.close();
 			if (film == null) {
@@ -114,7 +120,12 @@ public class DatabaseAccessorObject implements DatabaseAccessor {
 		String user = "student";
 		String password = "student";
 //		String sql = "SELECT * FROM film WHERE film.title like ? or film.description like ?";
-		String sql = "SELECT film.id, title, description, release_year, language_id, rental_duration, rental_rate, length, replacement_cost, rating, special_features, language.name FROM film JOIN language on film.language_id = language.id WHERE (film.title like ?) or (film.description like ?)";
+		String sql = "SELECT film.id, film.title, film.description, film.release_year, film.language_id, film.rental_duration, \n"
+				+ "film.rental_rate, film.length, film.replacement_cost, film.rating, film.special_features, language.name, category.name \n"
+				+ "FROM film JOIN language \n"
+				+ "ON film.language_id = language.id JOIN film_category on film.id = film_category.film_id\n"
+				+ "JOIN category ON film_category.category_id = category.id\n"
+				+ "WHERE (film.title like ?) or (film.description like ?);";
 //		String sql = "SELECT film.id, title, description, release_year, language_id, rental_duration, rental_rate, length, replacement_cost, rating, special_features, language.name, actor.first_name, actor.last_name FROM film JOIN film_actor on actor.id = film_actor.actor_id JOIN film on film_actor.film_id = film.id JOIN language on film.language_id = language.id WHERE film.title like ? or film.description like ?";
 		try {
 			Connection conn = DriverManager.getConnection(URL, user, password);
@@ -124,11 +135,12 @@ public class DatabaseAccessorObject implements DatabaseAccessor {
 			ResultSet rs = ps.executeQuery();
 			while (rs.next()) {
 //				System.out.println(rs.getString("description"));
-				Film film = new Film(rs.getInt("id"), rs.getString("title"), rs.getString("description"),
-						rs.getInt("release_year"), rs.getInt("language_id"), rs.getInt("rental_duration"),
-						rs.getDouble("rental_rate"), rs.getInt("length"), rs.getDouble("replacement_cost"),
-						rs.getString("rating"), rs.getString("special_features"), rs.getString("language.name"),
-						findActorsByFilmId(rs.getInt("id")));
+				Film film = new Film(rs.getInt("film.id"), rs.getString("film.title"), rs.getString("film.description"),
+						rs.getInt("film.release_year"), rs.getInt("film.language_id"),
+						rs.getInt("film.rental_duration"), rs.getDouble("film.rental_rate"), rs.getInt("film.length"),
+						rs.getDouble("film.replacement_cost"), rs.getString("film.rating"),
+						rs.getString("film.special_features"), rs.getString("language.name"),
+						rs.getString("category.name"), findActorsByFilmId(rs.getInt("id")));
 
 				films.add(film);
 
@@ -153,9 +165,9 @@ public class DatabaseAccessorObject implements DatabaseAccessor {
 		Film film = f;
 		String user = "student";
 		String password = "student";
-		String sql = "INSERT INTO film  (title, description, release_year, rental_duration, \n" + 
-				"rental_rate, length, replacement_cost, rating, special_features, language_id)\n" + 
-				"VALUES (?,?,?,?,?,?,?,?,?,?);";
+		String sql = "INSERT INTO film  (title, description, release_year, rental_duration, \n"
+				+ "rental_rate, length, replacement_cost, rating, special_features, language_id)\n"
+				+ "VALUES (?,?,?,?,?,?,?,?,?,?);";
 		Connection conn = null;
 		try {
 			conn = DriverManager.getConnection(URL, user, password);
@@ -192,14 +204,13 @@ public class DatabaseAccessorObject implements DatabaseAccessor {
 			System.out.println(e);
 			return null;
 		}
-		
 
 	}
 
 	@Override
 	public Film deleteFilm(int id) {
 		Film film = findFilmById(id);
-		if(film == null) {
+		if (film == null) {
 			return film;
 		}
 		String user = "student";
@@ -245,7 +256,7 @@ public class DatabaseAccessorObject implements DatabaseAccessor {
 			conn = DriverManager.getConnection(URL, user, password);
 			conn.setAutoCommit(false);
 			PreparedStatement ps = conn.prepareStatement(sql);
-			
+
 			ps.setString(1, film.getTitle());
 			ps.setString(2, film.getDescription());
 			ps.setInt(3, film.getRelease_year());
