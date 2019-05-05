@@ -1,7 +1,8 @@
 package com.skilldistillery.filmsite.controllers;
 
-import javax.validation.Valid;
 import java.util.List;
+
+import javax.validation.Valid;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.Errors;
