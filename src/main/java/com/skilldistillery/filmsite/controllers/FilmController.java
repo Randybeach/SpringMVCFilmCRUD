@@ -1,5 +1,7 @@
 package com.skilldistillery.filmsite.controllers;
 
+import java.util.List;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -115,8 +117,13 @@ public class FilmController {
 	@RequestMapping(path="search.do", params="keyword", method=RequestMethod.GET) 
 	public ModelAndView searchFilm(String keyword) {
 		ModelAndView mv = new ModelAndView();
+		List<Film> films = db.findFilmByKeyword(keyword);
+		if(films.size()==0) {
+			
+			mv.setViewName("/views/error.jsp");
+		}
 		
-		mv.addObject("details",db.findFilmByKeyword(keyword));
+		mv.addObject("details",films);
 		mv.setViewName("/views/home.jsp");
 		return mv;
 	}
@@ -124,6 +131,7 @@ public class FilmController {
 	@RequestMapping(path="changeFilm.do", method=RequestMethod.POST) 
 	public ModelAndView updateFilm(@ModelAttribute("film") Film film) {
 		ModelAndView mv = new ModelAndView();
+		
 		System.out.println("film id is :" + film.getId());
 		
 		mv.addObject("details",db.updateFilm(film));
