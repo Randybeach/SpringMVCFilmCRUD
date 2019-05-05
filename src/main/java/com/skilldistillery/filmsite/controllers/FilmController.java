@@ -150,8 +150,9 @@ public class FilmController {
 			mv.setViewName("/views/modify.jsp");
 			return mv;
 		} else {
+			Film film1 = db.updateFilm(film);
 
-			mv.addObject("details", db.updateFilm(film));
+			mv.addObject("details", db.findFilmById(film1.getId()) );
 			mv.setViewName("/views/result.jsp");
 			return mv;
 		}
