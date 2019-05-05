@@ -26,34 +26,69 @@
 	<c:if test="${value == 'change' }">
 		<h2>What fields would you like to change?</h2>
 		<form:form action="changeFilm.do" method="POST" modelAttribute="film">
-			ID:<form:input path="id" value="${details.id }" readonly="true"/><br>
-			Title:<form:input path="title" value="${details.title }"/><br>
-			Description:<form:input path="description" value="${details.description }"/><br> 
-			Release Year:<form:input path="release_year" value="${details.release_year }"/><form:errors path="release_year"/><br>
-			Rental Duration:<form:input path="rental_duration" value="${details.rental_duration }"/><br> 
-			Rental Rate:<form:input path="rental_rate" value="${details.rental_rate }"/><br>
-			Length:<form:input path="length" value="${details.length }"/><br>
-			Replacement Cost:<form:input path="replacement_cost" value="${details.replacement_cost }"/><br>
+			ID:<form:input path="id" value="${details.id }" readonly="true" />
+			<br>
+			Title:<form:input path="title" value="${details.title }" />
+			<br>
+			Description:<form:input path="description"
+				value="${details.description }" />
+			<br> 
+			Release Year:<form:input path="release_year"
+				value="${details.release_year }" />
+			<form:errors path="release_year" />
+			<br>
+			Rental Duration:<form:input path="rental_duration"
+				value="${details.rental_duration }" />
+			<br> 
+			Rental Rate:<form:input path="rental_rate"
+				value="${details.rental_rate }" />
+			<br>
+			Length:<form:input path="length" value="${details.length }" />
+			<br>
+			Replacement Cost:<form:input path="replacement_cost"
+				value="${details.replacement_cost }" />
+			<br>
 			Language:   <form:select path="language_id">
-						    <option value="1">English</option>
-						    <option value="2">Italian</option>
-						    <option value="3">Japanese</option>
-						    <option value="4">Mandarin</option>
-						    <option value="5">French</option>
-						    <option value="6">German</option>
-						</form:select><br>
+				<option value="1">English</option>
+				<option value="2">Italian</option>
+				<option value="3">Japanese</option>
+				<option value="4">Mandarin</option>
+				<option value="5">French</option>
+				<option value="6">German</option>
+			</form:select>
+			<br>
 			Rating:     <form:select path="rating">
-						    <option value="G">G</option>
-						    <option value="PG">PG</option>
-						    <option value="PG13">PG-13</option>
-						    <option value="R">R</option>
-						    <option value="NC17">NC-17</option>
-						</form:select><br>
+				<option value="G">G</option>
+				<option value="PG">PG</option>
+				<option value="PG13">PG-13</option>
+				<option value="R">R</option>
+				<option value="NC17">NC-17</option>
+			</form:select>
+			<br>
+			Categories:  <form:select path="categories">
+				<option value="1">Action</option>
+				<option value="2">Animation</option>
+				<option value="3">Children</option>
+				<option value="4">Classics</option>
+				<option value="5">Comedy</option>
+				<option value="6">Documentary</option>
+				<option value="7">Drama</option>
+				<option value="8">Family</option>
+				<option value="9">Foreign</option>
+				<option value="10">Games</option>
+				<option value="11">Horror</option>
+				<option value="12">Music</option>
+				<option value="13">New</option>
+				<option value="14">Sci-Fi</option>
+				<option value="15">Sports</option>
+				<option value="16">Travel</option>
+			</form:select>
+			<br>
 			Special Features:<br>
-			<form:checkbox path="special_features" value = "Trailers"/>Trailers<br> 
-			<form:checkbox path="special_features" value = "Commentaries"/>Commentary<br> 
-			<form:checkbox path="special_features" value = "Behind the Scenes"/>Behind the Scenes<br> 
-			<form:checkbox path="special_features" value = "Deleted Scenes"/>Deleted Scenes<br> 
+			<form:checkbox path="special_features" value="Trailers" />Trailers<br>
+			<form:checkbox path="special_features" value="Commentaries" />Commentary<br>
+			<form:checkbox path="special_features" value="Behind the Scenes" />Behind the Scenes<br>
+			<form:checkbox path="special_features" value="Deleted Scenes" />Deleted Scenes<br>
 			<input type="submit">
 
 		</form:form>
@@ -68,35 +103,66 @@
 	<c:if test="${value == 'add'}">
 		<h2>Your new film</h2>
 		<form:form action="addFilm.do" method="POST" modelAttribute="film">
-			Title:<form:input path="title" /><br>
-			Description:<form:input path="description"/><br> 
-			Release Year:<form:input path="release_year"/><form:errors path="release_year"/><br> 
-			Rental Duration:<form:input path="rental_duration"/><br> 
-			Rental Rate:<form:input path="rental_rate"/><br> 
-			Length:<form:input path="length"/><br> 
-			Replacement Cost:<form:input path="replacement_cost"/><br> 
+			Title:<form:input path="title" />
+			<br>
+			Description:<form:input path="description" />
+			<br> 
+			Release Year:<form:input path="release_year" />
+			<form:errors path="release_year" />
+			<br> 
+			Rental Duration:<form:input path="rental_duration" />
+			<br> 
+			Rental Rate:<form:input path="rental_rate" />
+			<br> 
+			Length:<form:input path="length" />
+			<br> 
+			Replacement Cost:<form:input path="replacement_cost" />
+			<br> 
 			Language:<form:select path="language_id">
-						    <option value="1">English</option>
-						    <option value="2">Italian</option>
-						    <option value="3">Japanese</option>
-						    <option value="4">Mandarin</option>
-						    <option value="5">French</option>
-						    <option value="6">German</option>
-						</form:select><br>
+				<option value="1">English</option>
+				<option value="2">Italian</option>
+				<option value="3">Japanese</option>
+				<option value="4">Mandarin</option>
+				<option value="5">French</option>
+				<option value="6">German</option>
+			</form:select>
+			<br>
 			Rating:<form:select path="rating">
-						    <option value="G">G</option>
-						    <option value="PG">PG</option>
-						    <option value="PG13">PG-13</option>
-						    <option value="R">R</option>
-						    <option value="NC17">NC-17</option>
-						</form:select><br>
+				<option value="G">G</option>
+				<option value="PG">PG</option>
+				<option value="PG13">PG-13</option>
+				<option value="R">R</option>
+				<option value="NC17">NC-17</option>
+			</form:select>
+			<br>
+			Categories:  <form:select path="categories">
+				<option value="1">Action</option>
+				<option value="2">Animation</option>
+				<option value="3">Children</option>
+				<option value="4">Classics</option>
+				<option value="5">Comedy</option>
+				<option value="6">Documentary</option>
+				<option value="7">Drama</option>
+				<option value="8">Family</option>
+				<option value="9">Foreign</option>
+				<option value="10">Games</option>
+				<option value="11">Horror</option>
+				<option value="12">Music</option>
+				<option value="13">New</option>
+				<option value="14">Sci-Fi</option>
+				<option value="15">Sports</option>
+				<option value="16">Travel</option>
+			</form:select>
+			<br>
 			Special Features:<br>
-			<form:checkbox path="special_features" value = "Trailers"/>Trailers<br> 
-			<form:checkbox path="special_features" value = "Commentaries"/>Commentary<br> 
-			<form:checkbox path="special_features" value = "Behind the Scenes"/>Behind the Scenes<br> 
-			<form:checkbox path="special_features" value = "Deleted Scenes"/>Deleted Scenes<br> 
-				<input type="submit">
-			<form:checkbox path="special_features" value = "none" style="opacity:0" checked="checked"/><br> 
+			<form:checkbox path="special_features" value="Trailers" />Trailers<br>
+			<form:checkbox path="special_features" value="Commentaries" />Commentary<br>
+			<form:checkbox path="special_features" value="Behind the Scenes" />Behind the Scenes<br>
+			<form:checkbox path="special_features" value="Deleted Scenes" />Deleted Scenes<br>
+			<input type="submit">
+			<form:checkbox path="special_features" value="none" style="opacity:0"
+				checked="checked" />
+			<br>
 		</form:form>
 	</c:if>
 </body>

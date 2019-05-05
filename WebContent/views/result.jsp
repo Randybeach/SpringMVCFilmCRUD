@@ -20,6 +20,7 @@
 <li><strong>Replacement Cost:</strong>${details.replacement_cost }</li>
 <li><strong>Rating:</strong>${details.rating }</li>
 <li><strong>Special Features:</strong>${details.special_features }</li>
+<li><strong>Category:</strong>${details.category }</li>
 <li><strong>Cast:</strong><ol>
 <c:forEach var="actor" items = "${details.actors }">
 <li>${actor }</li>

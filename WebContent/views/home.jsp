@@ -18,7 +18,7 @@
 <strong>Search films by keyword:</strong><input type = "text" name = "keyword"><input type = "submit" value = "Search Films">
 </form><br>
 <form action = "modify.do" method = GET>
-<strong>Change an existing film:</strong></strong><input type = "submit" value = "Modify a Film">
+<strong>Change an existing film:</strong><input type = "submit" value = "Modify a Film">
 </form>
 <c:choose>
 <c:when test="${details.size() gt 0 }">
