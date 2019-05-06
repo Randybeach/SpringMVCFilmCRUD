@@ -113,7 +113,7 @@
 		<form action="deleteFilm.do" method="POST">
 			<h3>What film would you like to remove</h3>
 			Film Id:<input type="text" name="filmId"><br>
-			<button type="button" class="btn btn-danger">Delete</button>
+			<button type="submit" class="btn btn-danger">Delete</button>
 			<!-- <input type="submit"> -->
 		</form>
 		<br>
