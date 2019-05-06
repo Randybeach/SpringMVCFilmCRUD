@@ -186,12 +186,11 @@ public class DatabaseAccessorObject implements DatabaseAccessor {
 			int num = ps.executeUpdate();
 			ResultSet rs = ps.getGeneratedKeys();
 			if (rs.next()) {
-				System.out.println("New film ID: " + rs.getInt(num));
+//				System.out.println("New film ID: " + rs.getInt(num));
 				film.setId(rs.getInt(num));
 			}
 			conn.commit();
-			System.out.println(film.getCategoryId());
-			updateFilmCategory(film.getId(), film.getCategoryId());
+			addFilmCategory(film.getId(), film.getCategoryId());
 			return film;
 
 		} catch (SQLException e) {
@@ -224,7 +223,7 @@ public class DatabaseAccessorObject implements DatabaseAccessor {
 			PreparedStatement ps = conn.prepareStatement(sql);
 			ps.setInt(1, film.getId());
 			ps.executeUpdate();
-			System.out.println("Deleted " + film.getTitle());
+//			System.out.println("Deleted " + film.getTitle());
 
 			conn.commit();
 			return film;
@@ -245,7 +244,7 @@ public class DatabaseAccessorObject implements DatabaseAccessor {
 	@Override
 	public Film updateFilm(Film f) {
 		Film film = f;
-		System.out.println("from DBAO special features " + film.getSpecial_features());
+//		System.out.println("from DBAO special features " + film.getSpecial_features());
 		String user = "student";
 		String password = "student";
 		String sql = "UPDATE film SET title = ?, description = ?, release_year = ?, rental_duration = ?, \n"
@@ -270,10 +269,11 @@ public class DatabaseAccessorObject implements DatabaseAccessor {
 			ps.setInt(10, film.getLanguage_id());
 			ps.setInt(11, film.getId());
 			ps.executeUpdate();
-			System.out.println("You have updated " + film.getTitle());
-			System.out.println(film);
+//			System.out.println("You have updated " + film.getTitle());
+//			System.out.println(film);
 
 			conn.commit();
+			updateFilmCategory(film.getId(),film.getCategoryId());
 			return film;
 		}
 
@@ -292,7 +292,7 @@ public class DatabaseAccessorObject implements DatabaseAccessor {
 
 	}
 	@Override
-	public void updateFilmCategory(int filmId, int catId) {
+	public void addFilmCategory(int filmId, int catId) {
 		String user = "student";
 		String password = "student";
 		String sql ="insert into film_category (film_id, category_id) values (?,?); ";
@@ -304,6 +304,37 @@ public class DatabaseAccessorObject implements DatabaseAccessor {
 			PreparedStatement ps = conn.prepareStatement(sql, PreparedStatement.RETURN_GENERATED_KEYS);
 			ps.setInt(1, filmId);
 			ps.setInt(2, catId);
+		int num = ps.executeUpdate();
+		ResultSet rs = ps.getGeneratedKeys();
+	
+		conn.commit();
+		
+
+	} catch (SQLException e) {
+		if (conn != null) {
+			try {
+				conn.rollback();
+			} catch (SQLException sqle) {
+				System.err.println("Error trying to rollback");
+			}
+		}
+		System.out.println(e);
+	}
+
+}
+	@Override
+	public void updateFilmCategory(int filmId, int catId) {
+		String user = "student";
+		String password = "student";
+		String sql ="update film_category set category_id=? where film_id=?; ";
+		
+				Connection conn = null;
+		try {
+			conn = DriverManager.getConnection(URL, user, password);
+			conn.setAutoCommit(false);
+			PreparedStatement ps = conn.prepareStatement(sql, PreparedStatement.RETURN_GENERATED_KEYS);
+			ps.setInt(1, catId);
+			ps.setInt(2, filmId);
 		int num = ps.executeUpdate();
 		ResultSet rs = ps.getGeneratedKeys();
 	

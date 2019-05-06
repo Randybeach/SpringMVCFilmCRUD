@@ -13,5 +13,6 @@ public interface DatabaseAccessor {
 	  public Film createFilm(Film film);
 	  public Film deleteFilm(int id);
 	  public Film updateFilm(Film film);
+	  public void addFilmCategory(int filmId, int catId);
 	  public void updateFilmCategory(int filmId, int catId);
 }
