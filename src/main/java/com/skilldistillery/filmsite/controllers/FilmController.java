@@ -56,11 +56,13 @@ public class FilmController {
 			return mv;
 		} else {
 			Film createdFilm = db.createFilm(film);
+			Film newFilm = db.findFilmById(createdFilm.getId());
+			
 
 			if (createdFilm == null) {
 				mv.setViewName("/views/error.jsp");
 			} else {
-				mv.addObject("details", createdFilm);
+				mv.addObject("details", newFilm);
 				mv.setViewName("/views/result.jsp");
 			}
 		}
