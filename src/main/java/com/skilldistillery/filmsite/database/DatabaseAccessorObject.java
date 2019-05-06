@@ -188,9 +188,10 @@ public class DatabaseAccessorObject implements DatabaseAccessor {
 			if (rs.next()) {
 				System.out.println("New film ID: " + rs.getInt(num));
 				film.setId(rs.getInt(num));
-				updateFilmCategory(film.getId(), film.getCategory());
 			}
 			conn.commit();
+			System.out.println(film.getCategoryId());
+			updateFilmCategory(film.getId(), film.getCategoryId());
 			return film;
 
 		} catch (SQLException e) {
