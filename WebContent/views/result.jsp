@@ -5,12 +5,12 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>${details.title }</title>
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 <link rel='stylesheet' href='Style.css'>
 </head>
 <body class ="resultsBody">
-<h1 class="shadow p-3 mb-5 bg-white rounded"><strong>${details.title }</strong></h1>
+<h1 class="text-center"><strong>${details.title }</strong></h1>
 <ul class="border border-light">
 <li class="border border-light"><strong>ID:</strong>${details.id }</li>
 <li class="border border-light"><strong>Description:</strong>${details.description }</li>
